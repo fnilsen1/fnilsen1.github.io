@@ -1,7 +1,13 @@
 img {
     width: 400px;
     border-radius: 10px;
-    float: left;
-    margin-right: 100px;
+
 } 
 body{background-color: powderblue;}
+ p{
+     font-size: 40px;
+     font-weight: bold;
+}
+ #kermit{
+
+ }
