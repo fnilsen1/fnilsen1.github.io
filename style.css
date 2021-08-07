@@ -12,3 +12,8 @@ p {
   font-weight: bold;
   text-align: center;
 }
+button {
+  width: 100px;
+  height: 50px;
+  margin-left: 200px;
+}
