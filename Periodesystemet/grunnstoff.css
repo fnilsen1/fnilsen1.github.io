@@ -1,0 +1,119 @@
+*{
+margin: 0;
+}
+body, html{
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    height: 100%;
+    width: 100%;
+}
+
+.wrapper{
+height: 100%;
+width: 100%;
+
+
+}
+
+.size{
+
+
+}
+
+.bytt{
+font-size: 4vh;
+padding: 5%;
+}
+
+#grunnstoff_Navn{
+font-size: 4vh;
+padding: 5%;
+
+}
+
+.knapp{
+width: 20%;
+height: 12%;
+
+}
+
+.boks{
+    width: 20%;
+    height: 30%;
+position: absolute;
+left: 40%;
+top: 40%;
+/* margin-top: 40%; */
+
+}
+
+#resultat{
+    padding: 5%;
+    margin-right: -10%;
+    color: chartreuse;
+}
+
+#inntasting{
+height: 10%;
+}
+
+#korrekt{
+    position: absolute;
+    top: 65%;
+    left: 50%;
+
+}
+
+.score{
+    position: absolute;
+    top: 65%;
+    left: 42%;
+}
+
+
+#feil{
+position: absolute;
+top: 58%;
+left: 41%;
+color: red;
+}
+
+#periodesystem{
+    position: absolute;
+    top:5%;
+    left: 15%;
+height: 90%;
+visibility: hidden;
+border: black solid 2px;
+background-color: rgb(9, 148, 136);
+
+
+}
+
+.navn{
+font-size: 4vh;
+position: absolute;
+top: 50%;
+left: 20%;
+}
+
+.nummer{
+    font-size: 4vh;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+}
+
+.hovedside{
+    font-size: 4vh;
+    position: absolute;
+    top: 58%;
+    left: 20%;
+}
+
+.keys{
+    position: absolute;
+height: 70%;
+top: 5%;
+left: 27%;
+
+}
