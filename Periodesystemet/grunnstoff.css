@@ -120,6 +120,7 @@ left:-15%;
 }
 
 @media screen and (max-aspect-ratio: 13/9){
+
     html, body  {
     background:rgb(20, 138, 192);
     
@@ -127,9 +128,9 @@ left:-15%;
     }
 
     .keys{
-    transform: scale(0.6);
+    transform: scale(1.5);
     position: absolute;
-    left: -40%;
+    left: 150%;
     top:50%;
     
     }
@@ -141,19 +142,21 @@ left:-15%;
     }
 
     .knapp{
-        width: 212%;
-        height: 50%;
-        font-size: 4vh;
+
+        width: 300%;
+        height: 80%;
+        font-size: 8vh;
         position: absolute;
-        top: 180%;
+        top: 210%;
         left: 200%;
         
         
         }
 
         #inntasting{
-            height: 30%;
-            transform: scale(2);
+            height: 80%;
+           
+            transform: scale(1);
             position: absolute;
             top: 110%;
             left: 200%;
@@ -162,39 +165,39 @@ left:-15%;
 
             .nummer{
                 position: absolute;
-                top: 180%;
+                top: 330%;
             
             margin-left: -10%;
-            font-size: 20vw;
+            font-size: 20vh;
             
             }
 
             .hovedside{
                 position: absolute;
-                top: 200%;
+                top: 370%;
                 
-                font-size: 10vh;
+                font-size: 20vh;
             }
 
             .bytt{
                 position: absolute;
-                top: 200%;
+                top: 500%;
                 left: -150%;
-                font-size: 7vh;
+                font-size: 15vh;
             }
 
             #grunnstoff_Navn{
                 position: absolute;
                 top: 35%;
                 left: 120%;
-                font-size: 7vh;
+                font-size: 15vh;
             }
 
           #resultat{
             position: absolute;
             top: 35%;
-            left: 400%;
-            font-size: 5vh;
+            left: 700%;
+            font-size: 10vh;
           }
 
           .score{
@@ -213,16 +216,17 @@ left:-15%;
           }
 
          #feil{
-         transform: scale(3);
+         transform: scale(1);
          position: absolute;
-         top: 130%;
-        margin-left: 220%;
+         top: 120%;
+        margin-left: 350%;
          }
 
          .navn{
         transform: scale(3);
         position: absolute;
         top: 20%;
-        margin-left: 30%;
+        margin-left: 40%;
+        font-size: 7vh;
          }
     }
