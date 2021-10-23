@@ -189,7 +189,7 @@ left:-15%;
             #grunnstoff_Navn{
                 position: absolute;
                 top: 35%;
-                left: 120%;
+                left: 200%;
                 font-size: 15vh;
             }
 
@@ -202,15 +202,16 @@ left:-15%;
 
           .score{
             position: absolute;
-            top: 135%;
+           
+            top: 145%;
           
-            font-size: 12vh;
+            font-size: 18vh;
           }
 
           #korrekt{
-          transform: scale(3);
+          transform: scale(2.5);
           position: absolute;
-          top: 160%;
+          top: 210%;
           left: 60%;
           
           }
