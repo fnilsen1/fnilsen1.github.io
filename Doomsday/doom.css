@@ -1,7 +1,13 @@
 body{
 background-image: url("https://wallpapercave.com/wp/wp8809513.jpg");
-background-size: cover;
-background-size: 100%;
+
+position: fixed;
+margin: 0;
+right: 0;
+bottom: 0;
+min-width: 100%; 
+min-height: 100%;
+z-index: -1;
 }
 
 h1{
