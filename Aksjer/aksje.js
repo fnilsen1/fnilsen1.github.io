@@ -50,6 +50,6 @@ document.getElementById("resultat").innerHTML+= data.values[0].open + " USD";
 }
 
 
-// getAksje();
-// getethereum()
+getAksje();
+getethereum()
 
