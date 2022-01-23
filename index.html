@@ -1,55 +1,31 @@
 <!DOCTYPE html>
-<html style="height: 100%; width: 100%;">
-
-
+<html lang="en">
 <head>
-    <title>Filips nettside</title>
-    <link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aksjer</title>
+    <link rel="stylesheet" href="aksje.css">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
 </head>
-
-<body style="height: 100%; width: 100%;" >
-
-
-    <p class="overskrift" style="color: white;">Hovedside </p>
+<body>
     
-    <div class="grid" style="display: grid; grid-template-columns: 0.15fr 0.70fr 0.15fr; height: 100%; width: 100%;" >
-        <div class="boks1" style="background-color: #333232;" >
-            <div style="background-color:white;" class="side1"><a href="side/side.html" >Neste side</a> </div>
-            <div style="background-color: white;" class="sider"> <a href="side2/side2.html">Side 2</a></div>
-            <div style="background-color:white;" class="sider"><a href="Timer/Timer.html">La Minuterie</a></div>
-            <div style="background-color:white;" class="sider"><a href="TCP/prosjekt1.html">TCP, UDP og IP</a></div>
-
-            <div style="background-color:white;" class="sider"><a href="Kubing/kubing.html">Interesser</a></div>
-            <div style="background-color:white;" class="sider"><a href="/Periodesystemet/index.html" >Periodesystemet</a></div>
-            <div style="background-color:white;" class="sider"><a href="Prosjekt3 - Kopi/index.html" >Skolekalender</a></div>
-            <div style="background-color:white;" class="sider"><a href="Doomsday/index.html" >Doomsday</a></div>
-            <div style="background-color:white;" class="sider"><a href="Aksjer/index.html" >Aksjer</a></div>
-        </div>
+    <input type="text" id="inntast">
+<h1 class="info"></h1>
 
 
-        <div class="boks3" style="background-color:white;">
-            <p style="text-align: center; font-weight: bold; font-size: 40px;">Klikk på katten for gratis penger⬇️</p>
-            <a href="https://www.youtube.com/watch?v=QtBDL8EiNZo" target="_blank">
-                <img style="margin-top: 50px;" src="Bilder/katt.jpg" alt="">
-            </a>
-            <div><img src="Bilder/lastned.jpg" alt=""></div>
-            
-            <img src="Bilder/fisk.jpg" alt="";>
-        
-            
-        </div>
-        <div class="høyre" style="background-color: #333232; height: 100%; display: grid;" >
-    
-      </div>
-    <p style="color: white; margin-left: 30px;">Copyright Filip 2021 ©</p>
+    <div class="container">
+
+    </div>
+    <img src="stockinfo.PNG" alt="" class="bilde" onclick="getAksje()">
+<img src="eth.jpg" alt="" id="eth" onclick="ticker(), getAksje()">
+<h1 id="ether"></h1>
+<h1 id="bitc"></h1>
+<label for="">Ticker:</label>
+<div id="resultat">Stats</div>
 
 
 
- 
 </body>
-
-
-
-
+<script src="aksje.js"></script>
 </html>
