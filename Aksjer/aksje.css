@@ -1,0 +1,103 @@
+*{
+margin: 0;
+}
+
+html,body{
+height: 100vh;
+width: 100vw;
+background-image: url('https://static.foto.no/linkeddata/bildekritikk/images/newimages/1102000-1102999/1102644_xl_E23D4186-497F-11E9-9318-B8F38B4C0282.jpg');
+background-size: cover;
+ 
+}
+
+.bilde{
+transform: scale(0.06);
+/* opacity: 0.7; */
+border-radius: 100px;
+position: absolute;
+top: -52.5%;
+left: -12%;
+transition-duration: 0.4s;
+}
+
+.bilde:hover{
+transform: scale(0.07);
+box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+}
+
+
+#eth{
+    border-radius: 30px;
+transform: scale(0.15);
+transition-duration: 0.4s;
+position: absolute;
+top: 3%;
+    
+}
+
+#eth:hover{
+    transform: scale(0.18);
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+cursor: pointer;
+    }
+
+#ether{
+    font-family: 'Orbitron', sans-serif;
+color: rgb(94, 216, 94);
+position: absolute;
+left: 17%;
+bottom: 60%;
+font-size: 1.7em;
+}    
+
+
+#bitc{
+    font-family: 'Orbitron', sans-serif;
+color: rgb(94, 216, 94);
+position: absolute;
+left: 31%;
+bottom: 60%;
+font-size: 1.7em;
+}   
+
+#inntast{
+position: absolute;
+left: 42%;
+height: 6vh;
+font-size: 2em;
+width: 16vw;
+top: 45%;
+z-index: 1;
+
+}
+
+.container{
+background: rgb(63, 63, 63);
+width: 70%;
+height: 70%;
+border-radius: 30px;
+position: absolute;
+left: 15%;
+top: 15%;
+opacity: 0.5;
+}
+
+label{
+font-size: 2.5em;
+font-weight: bold;
+position: absolute;
+top: 45%;
+left: 30%;
+}
+
+#resultat{
+font-size: 2em;
+font-weight: bold;
+position: absolute;
+top: 55%;
+left: 30%;
+color: white;
+}
