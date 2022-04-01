@@ -11,3 +11,10 @@ function kopier() {
   alert("Du kopierte " + "\n" + kilde);
   document.getElementById("resultat").innerHTML = kilde;
 }
+window.addEventListener("keydown", enter, false);
+
+function enter(key) {
+  if (key.keyCode == "13") {
+    kopier();
+  }
+}
