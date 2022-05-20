@@ -1,0 +1,92 @@
+*{margin: 0;
+    font-size: 20px;}
+
+body {font-family: Arial, Helvetica, sans-serif;
+min-height: 98vh;
+background-image: url('https://images.unsplash.com/photo-1562975327-29a8cbfd5be6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cnViaWtzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80');
+background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+
+input[type=text], input[type=password] {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 40%;
+  border-radius: 10px;
+  
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 20%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ flex-direction: column;
+}
+.registrering {
+    padding: 16px;
+    width: 30%;
+    border-radius: 10px;
+    margin: auto;
+   display: flex;
+   justify-content: center;
+  }
+
+
+label{
+color: white;
+}
+
+#logg_inn{
+color: white;
+text-align: center;
+margin-top: 10px;
+font-size: 1.5em;
+
+
+}
+
+#registrer{
+    color: white;
+  
+
+ text-align: center;
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
