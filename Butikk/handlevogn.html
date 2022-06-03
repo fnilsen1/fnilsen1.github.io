@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handlevogn</title>
+    <link rel="stylesheet" href="cart.css" />
+  </head>
+  <body>
+    <nav id="nav">
+      <h1 class="nav_el" id="logg_ut" onclick="signOut()">Logg ut</h1>
+      <h1 class="nav_el">Din Handlevogn 🛒</h1>
+      <h1 class="nav_el" onclick="hovedside()" id="hovedside">Hovedside</h1>
+    </nav>
+
+    <div id="stats">
+      <div id="total">Total pris</div>
+      <div id="antall">Antall varer</div>
+      <button id="kjop_knapp" onclick="kjop_alt()">Kjøp alle varer</button>
+    </div>
+
+    <div class="varer">
+      <div class="boks">
+        <img
+          class="bilder"
+          src="https://cdn.estore.no/29532-thickbox_default/magnetic-pyraminx.jpg"
+          alt=""
+        />
+        <h1>Tengyun 3x3</h1>
+        <h3>Antall:</h3>
+        <input type="number" min="0" />
+      </div>
+    </div>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <script src="handlevogn.js"></script>
+</html>
