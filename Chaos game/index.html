@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chaos game</title>
+    <link rel="stylesheet" href="chaos.css" />
+  </head>
+  <body>
+    <svg height="99.51vh" width="100%" id="svg">
+      <polygon points="667,100 967,620 367,620" class="triangle" />
+      <circle
+        cx="667"
+        cy="400"
+        r="1"
+        stroke="black"
+        stroke-width="3"
+        fill="red"
+      />
+
+      <circle
+        cx="667"
+        cy="100"
+        r="1"
+        stroke="black"
+        stroke-width="3"
+        fill="red"
+      />
+
+      <circle
+        cx="967"
+        cy="620"
+        r="1"
+        stroke="black"
+        stroke-width="3"
+        fill="red"
+      />
+
+      <circle
+        cx="367"
+        cy="620"
+        r="1"
+        stroke="black"
+        stroke-width="3"
+        fill="red"
+      />
+    </svg>
+    <div id="div">
+      <h2>Hvor mange punkter?</h2>
+      <input type="text" id="input" class="ting" />
+      <button onclick="nytt_punkt()" class="ting">Kjør</button>
+    </div>
+  </body>
+  <script src="chaos.js"></script>
+</html>
