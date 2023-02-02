@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="nb">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="prosjekt3.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://morad.pro/favicon.png">
+    <title>Liste</title>
+  </head>
+  <body>
+    <ul class="navbar">
+      <a href="../index.html" class="aktiv"><li>Hovedside</li> </a>
+      <a href="../TCP/prosjekt1.html" class="standarder"><li>Standarder</li></a>
+
+      <a href="../side2/side2.html"><li>Overraskelse</li></a>
+      <a href="../Kubing/kubing.html"><li>Interesser</li></a>
+      <a href="../Periodesystemet/index.html"><li>Grunnstoff-trainer</li></a>
+    </ul>
+    <h1 class="overskrift">
+      Skolekalender
+      <label class="switch" id="mode" onmousedown="darkmode()">
+        <input type="checkbox" />
+        <span class="slider round"></span>
+      </label>
+      <img src="src/sol.png" alt="" id="sol" />
+    </h1>
+
+    <div class="wrapper">
+      <div class="add">
+        <div class="fag">
+          <label for="name" class="titler">Fag:</label><br />
+          <input type="text" id="inputfag" name="name" />
+        </div>
+        <br /><br />
+        <div class="type">
+          <label for="" class="titler">Type oppgave:</label><br />
+          <input type="text" id="oppgave" name="" />
+        </div>
+        <br /><br />
+
+        <div class="dato">
+          <label for="" class="titler">Uke:</label><br />
+          <input type="number" id="inputdato" name="" max="52" />
+        </div>
+
+        <div id="skala">
+          <label for="name" class="gledeskala">Gledeskala: </label>
+          <h2 id="skala_tall">3</h2>
+        </div>
+        <input
+          type="range"
+          id="points"
+          name="points"
+          min="1"
+          max="5"
+          oninput="endring()"
+        />
+
+        <br />
+        <div class="knapper">
+          <button onclick="add()" class="button legg_til" id="knapp1">
+            Legg til
+          </button>
+
+          <button class="legg_til button" onclick="delAll()" id="knapp2">
+            Fjern alt
+          </button>
+        </div>
+      </div>
+      <div class="liste">
+        <table cellspacing="10" id="tabell">
+          <tbody id="table">
+            <tr>
+              <th>Fag</th>
+              <th>
+                Type
+                <img
+                  src="src/pilopp.png"
+                  alt=""
+                  class="pilned"
+                  onclick="sort1(this)"
+                />
+              </th>
+              <th>
+                Uke
+                <img
+                  src="src/pilopp.png"
+                  alt=""
+                  class="pilned"
+                  onclick="sort2(this)"
+                />
+              </th>
+              <th>
+                Glede<img
+                  src="src/pilopp.png"
+                  alt=""
+                  class="pilned"
+                  onclick="sort(this)"
+                />
+              </th>
+            </tr>
+            <tr>
+              <td>
+                Norsk
+                <img
+                  src="src/trash.png"
+                  alt=""
+                  onclick="remove(this)"
+                  class="trash"
+                />
+              </td>
+              <td>Innlevering</td>
+              <td>45</td>
+              <td id="yellow">3</td>
+            </tr>
+
+            <tr>
+              <td>
+                Fransk
+                <img
+                  src="src/trash.png"
+                  alt=""
+                  onclick="remove(this)"
+                  class="trash"
+                />
+              </td>
+              <td>Framføring</td>
+              <td>43</td>
+              <td id="red">1</td>
+            </tr>
+
+            <tr>
+              <td>
+                Matte
+                <img
+                  src="src/trash.png"
+                  alt=""
+                  onclick="remove(this)"
+                  class="trash"
+                />
+              </td>
+              <td>Prøve</td>
+              <td>50</td>
+              <td id="orange">2</td>
+            </tr>
+
+            <tr>
+              <td>
+                Fysikk
+                <img
+                  src="src/trash.png"
+                  alt=""
+                  onclick="remove(this)"
+                  class="trash"
+                />
+              </td>
+              <td>Innlevering</td>
+              <td>37</td>
+              <td id="lime">4</td>
+            </tr>
+
+            <tr>
+              <td>
+                IT
+                <img
+                  src="src/trash.png"
+                  alt=""
+                  onclick="remove(this)"
+                  class="trash"
+                />
+              </td>
+              <td>Prosjekt</td>
+              <td>41</td>
+              <td id="green">5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+  <script src="prosjekt3.js"></script>
+</html>

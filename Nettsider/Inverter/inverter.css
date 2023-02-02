@@ -1,0 +1,48 @@
+*{margin:0;}
+#input{
+width: 80%;
+height: 60px;
+font-size: 2em;
+margin: auto;
+
+}
+
+#resultat{
+  width: 80%;
+  height: 60px;
+  font-size: 2em;
+  margin: auto;
+  margin-top: 2%;
+  color: white;
+  
+ 
+  
+  }
+
+  #japansk{
+  margin: auto;
+  font-size: 2em;
+  }
+
+  .container{
+  width: 80%;
+  margin: auto;
+  /* border: 2px solid black; */
+  display: flex;
+  flex-direction: column;
+  margin-top: 30%;
+  }
+
+
+body{
+  height:100vh;
+  width: 100%;
+  top: 0;
+background-image: url("https://img.freepik.com/free-vector/gradient-japanese-temple-with-sun_52683-44985.jpg?t=st=1651954968~exp=1651955568~hmac=565358d59eee436e5eeac34250d112efac854d7181cad7b93b4721fa36a56bf2&w=2000");
+background-attachment: fixed;
+background-repeat: no-repeat;
+background-size: cover;
+  position: absolute;
+ 
+
+}

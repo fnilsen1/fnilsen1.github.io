@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+
+  background-image: url("https://www.trondelagfylke.no/contentassets/8c547075c2c744f39d5787d65a96a040/norske-fylker-2019-og-2020.png");
+  background-size: cover;
+  background-attachment: fixed;
+  font-weight: bold;
+}
+
+.container {
+  margin-left: 19vw;
+  width: 50%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  text-align: center;
+}
+
+select {
+  width: 20%;
+  margin-bottom: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+#svar {
+  font-size: 1.7em;
+  padding: 20px;
+  background-color: gray;
+  opacity: 0.8;
+  border-radius: 10px;
+  position: absolute;
+  width: 20vw;
+  min-height: 600px;
+  top: 10vh;
+  left: 70vw;
+}
+
+button {
+  width: 10vw;
+  margin: auto;
+}

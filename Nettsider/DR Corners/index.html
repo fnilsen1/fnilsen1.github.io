@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DR corners</title>
+    <link rel="stylesheet" href="dr.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://morad.pro/favicon.png">
+  </head>
+  <body>
+    <div id="container">
+        <div id="scramble">Scramble</div>
+        <div id="solution">Solution</div>
+        <div id="cube">
+            <einar-drawscramble scramble="" puzzle="3x3" id="einar_cube"> 
+        </div>
+        <select id="select" oninput="next_alg()">
+            <option value="0" selected>Righty algs</option>
+            <option value="1">Mirrors</option>
+            <option value="2">All algs</option>
+          </select>
+        <button onclick="next_alg()">Next</button>
+        <button onclick="display_solution()">See solution</button>
+        <!-- title -->
+
+  
+  
+  <!-- modal 1 -->
+  <div class="box">
+    <a href="#m1-o" class="link-1" id="m1-c">Information</a>
+    
+  
+    <div class="modal-container" id="m1-o" style="--m-background: transparent;">
+      <div class="modal">
+        <h1 class="modal__title">Credits and how to use</h1>
+        <p class="modal__text">
+            Use space to get the solution and the right arrow key to get the next scramble.
+            <br>
+            <br>
+            Credit to Tom Nelson for the recommended algs, and to Einar for the draw scramble element.
+            <br>
+            <br>
+            <a href="https://www.youtube.com/watch?v=rjBNzZH2QTo&lc=UgyEquUCOzcpmc7h3I94AaABAg.9jeywxEL_mV9jfWn9WgXZu" id="tom">Tom's Video</a>
+            <br>
+            <a href="https://einarkl.github.io/" id="einar">Einar's github page</a>
+            <br>
+            <a href="https://drive.google.com/file/d/1lYQnaF1VuiR7EDfi1DUcIJM0FYC2B3mo/view" id="jack">All corner cases</a>
+            
+        </p>
+        
+        <a href="#m1-c" class="link-2"></a>
+      </div>
+    </div>
+  </div>
+  <!-- /modal 1 -->
+  
+
+
+
+  </body>
+  <script
+    src="https://einarkl.github.io/Kubing/EinarDrawScramble/EinarDrawScramble.js"
+    type="module"
+  ></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="dr.js"></script>
+</html>
