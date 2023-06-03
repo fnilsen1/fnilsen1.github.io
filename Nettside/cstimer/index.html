@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>csTimer - Professional Rubik's Cube Timer</title>
+    <link rel="stylesheet" href="cstimer.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="cstimer-icon-filled-256.png">
+</head>
+<body>   
+    <video id="myVideo" width="320" height="176">
+        <source src="rick.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    
+</body>
+
+<script>
+document.addEventListener('click', musicPlay);
+function musicPlay() {
+    document.getElementById('myVideo').play();
+    document.getElementById("myVideo").style.display = "block";
+}
+
+document.addEventListener('keydown', event => {
+  if (event.code === 'Space') {
+    document.getElementById('myVideo').play();
+    document.getElementById("myVideo").style.display = "block";
+  }
+})
+</script>
+
+
+
+</html>

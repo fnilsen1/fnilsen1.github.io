@@ -1,0 +1,23 @@
+*{
+margin: 0;
+padding: 0;
+}
+
+body{
+    background-image: url("cstimer.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#myVideo{
+width: 80%;
+height: 80%;
+display: none;
+}

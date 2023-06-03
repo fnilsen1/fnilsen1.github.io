@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="firestore.css" />
+    <title>Firestore test</title>
+  </head>
+  <body>
+    <div id="container">
+      <nav id="nav">
+        <div class="navEl active" id="sport">Sport</div>
+        <div class="navEl" id="gaming">Gaming</div>
+        <div class="navEl" id="logOut">Logg ut</div>
+        
+    
+      </nav>
+
+
+      <div class="inputs">
+
+        <label for="">Message:</label>
+        <input type="text" id="message" placeholder="your message" />
+        <button id="add">Post message</button>
+      </div>
+      <div class="inputs">
+        <label for="">Change username</label>
+        <input type="" placeholder="New username" id="middle">
+        <button id="change">Change</button>
+        <select id="select" onchange="updateQuery()">
+          <option value="all">All</option>
+          <option value="yourPosts">Your posts</option>
+
+        </select>
+      </div>
+
+      <div id="messageContainer"></div>
+    </div>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="firestore.js"></script>
+
+
+
+
+</html>

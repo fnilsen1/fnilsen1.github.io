@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login And Registration</title>
+    <link rel="stylesheet" href="logIn.css" />
+  </head>
+
+  <body>
+    <div class="background">
+      <div class="background-box">
+        <div class="button-box">
+          <div id="btn"></div>
+          <button type="button" class="switch-button" id="loginButton">
+            Log In
+          </button>
+          <button type="button" class="switch-button" id="registerButton">
+            Register
+          </button>
+        </div>
+        <div class="socials">
+          <img src="Images/fb.png" alt="Facebook logo" />
+          <img src="Images/gp.png" alt="Google logo" />
+          <img src="Images/tw.png" alt="Twitter logo" />
+        </div>
+
+        <div id="login" class="input-group">
+          <input
+            type="text"
+            class="input-field"
+            placeholder="Enter Email"
+            id="emailInputLogin"
+            required
+          />
+          <input
+            type="password"
+            class="input-field"
+            placeholder="Enter Password"
+            id="passwordToggle"
+            required
+          />
+
+          <!-- <input type="checkbox" type="checkbox" id="passwordVisibility" /> -->
+
+          <input type="checkbox" class="check-box" /><span
+            >Remember Password</span
+          >
+          <button type="submit" class="submit-btn" id="loginUser">
+            Log in
+          </button>
+        </div>
+
+        <div id="register" class="input-group">
+          <input
+            type="text"
+            id="userInput"
+            class="input-field"
+            placeholder="Username"
+          />
+          <input
+            type="email"
+            id="emailInput"
+            class="input-field"
+            placeholder="Enter Email"
+          />
+
+          <input
+            type="password"
+            id="passwordInput"
+            class="input-field"
+            placeholder="Enter Password"
+          />
+
+          <input type="checkbox" class="check-box" />
+          <span>I agree to the terms & conditions</span>
+
+          <button type="" class="submit-btn" id="registerUser">Register</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script type="module" src="logIn.js"></script>
+   
+  </body>
+</html>

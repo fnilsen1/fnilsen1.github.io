@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="registrer.css" />
+    <title>Registrer politiker</title>
+  </head>
+  <body>
+    <div id="container">
+      <nav id="nav">
+        <div class="navEl"><a href="index.html">Meny</a></div>
+        <div class="navEl"><a href="hjem.html">Hjem</a></div>
+        <div class="navEl"><a href="politikere.html">Politikere</a></div>
+        
+    
+    
+      </nav>
+
+<div id="skjema">
+    <input type="text" placeholder="Fornavn"  class="input" id="fornavn">
+    <input type="text" placeholder="Etternavn" class="input" id="etternavn">
+    <input type="text" placeholder="Partiforkortelse" class="input" id="parti">
+    <input type="text" placeholder="Valgkrets" class="input" id="krets">
+    <button onclick="nyPolitiker()">Legg til politiker</button>
+</div>
+
+    
+    </div>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="registrer.js"></script>
+
+
+
+
+</html>

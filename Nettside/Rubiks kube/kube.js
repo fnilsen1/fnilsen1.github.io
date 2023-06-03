@@ -323,6 +323,54 @@ function flate_mot(farge) {
   farge[6] = forste_hjorne_mot;
 }
 
+function KP(){
+    const UB = hvit[1]
+    const BU = bla[1]
+    const UR = hvit[5]
+    const RU = rod[1]
+    const UF =hvit[7]
+    const FU = gronn[1]
+    const UL =hvit[3]
+    const LU = oransje[1]
+    
+    hvit[1]=FU
+    hvit[3]=UR
+    hvit[5]=UB
+    hvit[7]=UL
+    
+    oransje[1]=RU
+    gronn[1]=LU
+    rod[1]=BU
+    bla[1]=UF
+    
+    const UBL = hvit[0]
+    const LBU = oransje[0]
+    const BLU = bla[2]
+    
+    hvit[0]=gronn[0]
+    oransje[0]=oransje[2]
+    bla[2]=hvit[6]
+    
+    hvit[6]=UBL
+    oransje[2]=BLU
+    gronn[0]=LBU
+    
+    const UBR = hvit[2]
+    const BRU = bla[0]
+    const RUB = rod[2]
+    
+    hvit[2]=gronn[8]
+    bla[0]=rod[6]
+    rod[2]=gul[2]
+    
+    gronn[8]=RUB
+    rod[6]=UBR
+    gul[2]=BRU
+    
+    update()
+    
+    }
+
 window.addEventListener("keydown", klikk, false);
 
 function klikk(key) {
@@ -398,46 +446,6 @@ function klikk(key) {
 }
 
 function update() {
-  // console.log("");
-  // console.log("         " + hvit[0], hvit[1], hvit[2]);
-  // console.log("         " + hvit[3], hvit[4], hvit[5]);
-  // console.log("         " + hvit[6], hvit[7], hvit[8]);
-  // console.log(
-  //   oransje[0],
-  //   oransje[1],
-  //   oransje[2],
-  //   gronn[0],
-  //   gronn[1],
-  //   gronn[2],
-  //   rod[0],
-  //   rod[1],
-  //   rod[2]
-  // );
-  // console.log(
-  //   oransje[3],
-  //   oransje[4],
-  //   oransje[5],
-  //   gronn[3],
-  //   gronn[4],
-  //   gronn[6],
-  //   rod[3],
-  //   rod[4],
-  //   rod[5]
-  // );
-  // console.log(
-  //   oransje[6],
-  //   oransje[7],
-  //   oransje[8],
-  //   gronn[6],
-  //   gronn[7],
-  //   gronn[8],
-  //   rod[6],
-  //   rod[7],
-  //   rod[8]
-  // );
-  // console.log("         " + gul[0], gul[1], gul[2]);
-  // console.log("         " + gul[3], gul[4], gul[5]);
-  // console.log("         " + gul[6], gul[7], gul[8]);
 
   document.getElementById("l1").innerHTML = hvit[0] + hvit[1] + hvit[2];
   document.getElementById("l2").innerHTML = hvit[3] + hvit[4] + hvit[5];
@@ -491,3 +499,7 @@ function update() {
 }
 
 update();
+R_prime()
+KP()
+update();
+// KP()

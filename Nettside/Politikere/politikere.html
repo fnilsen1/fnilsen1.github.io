@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="politikere.css" />
+    <title>Politikere</title>
+  </head>
+  <body>
+    <div id="container">
+      <nav id="nav">
+        <div class="navEl"><a href="index.html">Meny</a></div>
+        <div class="navEl"><a href="hjem.html">Hjem</a></div>
+        <div class="navEl"><a href="registrer.html">Registrer politiker</a></div>
+        
+    
+      </nav>
+
+
+      
+
+      <div class="inputs">
+        <label for="">Velg parti</label>
+        <select id="select" onchange="visPolitikere()">
+          <option value="Alle">Alle</option>
+          <option value="Ap">Ap</option>
+          <option value="H">H</option>
+          <option value="Sp">Sp</option>
+          <option value="FrP">FrP</option>
+          <option value="SV">SV</option>
+          <option value="R">R</option>
+          <option value="V">V</option>
+          <option value="MDG">MDG</option>
+          <option value="KrF">KrF</option>
+
+
+        </select>
+      </div>
+
+      <div id="tabellDiv">
+        <table id="table">
+            <thead>
+              <tr>
+                <th>Fornavn</th>
+                <th>Etternavn</th>
+                <th>Parti</th>
+                <th>Valgkrets</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+          </table>
+
+      </div>
+    </div>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="politikere.js"></script>
+
+
+
+
+</html>
