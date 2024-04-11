@@ -499,7 +499,4 @@ function update() {
 }
 
 update();
-R_prime()
-KP()
-update();
 // KP()
