@@ -1,0 +1,24 @@
+html {
+    background-image: linear-gradient(to bottom, #181818, #464646);
+    background-attachment: fixed;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+    background: transparent;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#inpMoves {
+    width: 50%;
+    margin: auto;
+}
+
+h1 {
+    color: #aaaaaa;
+}
