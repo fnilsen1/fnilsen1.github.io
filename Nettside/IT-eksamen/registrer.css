@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  font-size: 20px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 98vh;
+  background-image: url("Images/war.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #04aa6d;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 40%;
+  border-radius: 10px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 20%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  border-color: black;
+}
+.registrering {
+  padding: 16px;
+  width: 30%;
+  border-radius: 10px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+label {
+  color: black;
+}
+
+#logg_inn {
+  color: black;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.5em;
+}
+
+#registrer {
+  color: black;
+
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.5em;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}

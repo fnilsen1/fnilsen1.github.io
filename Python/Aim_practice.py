@@ -1,56 +1,18 @@
-import pygame, sys, random
-
-class Crosshair(pygame.sprite.Sprite):
-    def __init__(self, picture_path):
-        super().__init__()
-        self.image = pygame.image.load(picture_path)
-        self.rect = self.image.get_rect()
-        # self.gunshot = pygame.mixer.Sound("Pong\score.ogg")
-    def shoot(self):
-        self.gunshot.play()
-        pygame.sprite.spritecollide(crosshair,target_group,True)
-    def update(self):
-        self.rect.center = pygame.mouse.get_pos()
-
-class Target(pygame.sprite.Sprite):
-    def __init__(self, picture_path, pos_x,pos_y):
-        super().__init__()
-        self.image = pygame.transform.scale(pygame.image.load(picture_path), (100,100))
-        self.rect = self.image.get_rect()
-        self.rect.center = [pos_x,pos_y]
-
-pygame.init()
-clock = pygame.time.Clock()
-
-screen_width = 1000
-screen_height = 700
-screen = pygame.display.set_mode((screen_width,screen_height))
-background = pygame.image.load(r"Python_filer\lane.png")
-background = pygame.transform.scale(background, (screen_width, screen_height))
-pygame.mouse.set_visible(False)
-
-crosshair = Crosshair(r"Python_filer\lane.png")
-
-crosshair_group = pygame.sprite.Group()
-crosshair_group.add(crosshair)
+import numpy as np
+start = 0
+slutt = 1
+intervaller = 1000
+steglengde = (slutt-start)/intervaller
+x = np.linspace(start, slutt, intervaller+1)
 
 
-target_group = pygame.sprite.Group()
-for target in range(20):
-    new_target = Target("Python_filer\monke.png",random.randrange(0,screen_width),random.randrange(0,screen_height))
-    target_group.add(new_target)
+sum=0
 
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
+def f(k):
+    return np.sqrt(1+1/((1+k**2)**2))
 
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            crosshair.shoot()
-    pygame.display.flip()
-    screen.blit(background,(0,0))
-    target_group.draw(screen)
-    crosshair_group.draw(screen)
-    crosshair_group.update()
-    clock.tick(60)
+for i in range(1, intervaller+1):
+
+    sum+=steglengde*((f(x[i])+f(x[i-1]))/2)
+
+print(sum)

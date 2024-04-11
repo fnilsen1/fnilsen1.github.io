@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<html>
+  <head>
+    <title>Busstider</title>
+  </head>
+  <body>
+    <div class="overlay-container">
+      <div class="overlay-content">
+        <h2>Bonus Features</h2>
+        <p>By popular demand we are introducing crazy new feature :oo</p>
+        <div class="row">
+          <div class="col s12">
+            <label>
+              <input id="checkbox" type="checkbox" />
+              <span>Jonatan Mode</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <i
+      id="togglecog"
+      class="fa fa-cog fa-1x fa-fw"
+      style="margin-left: 90%"
+    ></i>
+    <h1 style="margin-top: auto"></h1>
+    <h4 id="tidsiden"></h4>
+    <div id="bus1">
+      <h2 id="line1"></h2>
+      <h3 id="expectedArrivaltime1"></h3>
+      <h3 id="delay1"></h3>
+      <h2 id="timetoleave1"></h2>
+    </div>
+    <div id="bus2">
+      <h2 id="line2"></h2>
+      <h3 id="expectedArrivaltime2"></h3>
+      <h3 id="delay2"></h3>
+      <h2 id="timetoleave2"></h2>
+    </div>
+
+    <style>
+      :root {
+        --background-color: #f5f5f5;
+        --text-color: #333333;
+        --green-color: green;
+      }
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+      .dark {
+        --background-color: #333333;
+        --text-color: #f5f5f5;
+        --green-color: #2ecc71;
+      }
+      .overlay-container {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .overlay-content {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: var(--background-color);
+        padding: 10px;
+        border-radius: 5px;
+        width: 15vw;
+      }
+      body {
+        text-align: center;
+        width: 100%;
+        zoom: 3.3;
+      }
+      .toolbar {
+        display: flex;
+        justify-content: space-between;
+      }
+
+    </style>
+
+    <script>
+      // Get the checkbox
+      const checkbox = document.getElementById("checkbox");
+      const storedValue = localStorage.getItem("checkboxValue");
+      if (storedValue === "true") {
+        checkbox.checked = true;
+      } else {
+        checkbox.checked = false;
+      }
+      toggleBus2(checkbox.checked);
+
+      checkbox.addEventListener("click", function () {
+        localStorage.setItem("checkboxValue", checkbox.checked);
+        toggleBus2(checkbox.checked);
+      });
+
+      function toggleBus2(isChecked) {
+        let bus2 = document.getElementById("bus2");
+        if (isChecked) {
+          bus2.style.display = "block";
+          document.body.classList.add("dark");
+        } else {
+          bus2.style.display = "none";
+          document.body.classList.remove("dark");
+        }
+      }
+
+      // if checkbox is enabled, show bus2
+      if (checkbox.checked) {
+        document.getElementById("bus2").style.display = "block";
+      } else {
+        document.getElementById("bus2").style.display = "none";
+      }
+
+      // Get the overlay
+      const overlayContainer = document.querySelector(".overlay-container");
+      const closeButton = document.querySelector(".overlay-content button");
+
+      function toggleOverlay() {
+        var overlayContainer = document.querySelector(".overlay-container");
+        if (overlayContainer.style.display === "block") {
+          overlayContainer.style.display = "none";
+        } else {
+          overlayContainer.style.display = "block";
+        }
+        console.log("toggleOverlay");
+      }
+
+      overlayContainer.addEventListener("click", function (event) {
+        // if clicking outside of the content, close the overlay
+        if (event.target === overlayContainer) {
+          toggleOverlay();
+        }
+      });
+
+      const togglecog = document.querySelector("#togglecog");
+      togglecog.addEventListener("click", function (event) {
+        toggleOverlay();
+      });
+
+      // Implementation code; above is just toggling the overlay
+      var lastUpdate = new Date();
+      var expectedArrivaltimeList = [undefined, undefined];
+
+      var atGloshaugen = false;
+
+      const url = "https://api.entur.io/journey-planner/v3/graphql";
+
+      const atMoholtQuery =
+        '{"query":"{stopPlace(id: \\"NSR:StopPlace:42743\\") {id name estimatedCalls(timeRange: 72100, numberOfDepartures: 10) {realtime aimedArrivalTime aimedDepartureTime expectedArrivalTime expectedDepartureTime actualArrivalTime actualDepartureTime date forBoarding forAlighting destinationDisplay {frontText} quay {id} serviceJourney {journeyPattern {line {id name transportMode}}}}}}"}';
+
+      const atGloshaugenQuery =
+        '{"query":"{stopPlace(id: \\"NSR:StopPlace:44085\\") {id name estimatedCalls(timeRange: 72100, numberOfDepartures: 10) {realtime aimedArrivalTime aimedDepartureTime expectedArrivalTime expectedDepartureTime actualArrivalTime actualDepartureTime date forBoarding forAlighting destinationDisplay {frontText} quay {id} serviceJourney {journeyPattern {line {id name transportMode}}}}}}"}';
+
+      // Update the display with data from Entur
+      function updateData(busTemplate) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", url);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.setRequestHeader("ET-Client-Name", "entur-tavla");
+        var test = atGloshaugen;
+        xhr.onload = function () {
+          atGloshaugen = test; // why tf is it accessible now, but not without a dummy variable?
+          const res = JSON.parse(xhr.responseText);
+          const data = res.data;
+          const errors = res.errors;
+
+          if (errors) {
+            console.error(errors);
+          } else {
+            console.log(data);
+            lastUpdate = new Date();
+            // Display bus times using data.stopPlace.estimatedCalls
+            // Display number and bus line of first bus with frontText "Hallset via sentrum" using data.stopPlace.estimatedCalls.serviceJourney.journeyPattern.line.name
+            const frontText = atGloshaugen ? "Lohove" : "Hallset via sentrum";
+            const busArray = data.stopPlace.estimatedCalls.filter(function (
+              bus
+            ) {
+              return bus.destinationDisplay.frontText === frontText;
+            });
+            const firstBus = busArray[0];
+            const busLine = firstBus.destinationDisplay.frontText;
+            const busId = firstBus.serviceJourney.journeyPattern.line.id;
+            document.querySelector("#line" + busTemplate).innerText =
+              busId[busId.length - 1] + " " + busLine;
+
+            // Display bus time using data.stopPlace.estimatedCalls.expectedArrivalTime
+            let expectedArrivaltime = new Date(firstBus.expectedArrivalTime);
+            const busExpectedHours = expectedArrivaltime.getHours();
+            const busExpectedMinutes =
+              expectedArrivaltime.getMinutes() < 10
+                ? "0" + expectedArrivaltime.getMinutes()
+                : expectedArrivaltime.getMinutes();
+            const busExpectedSeconds =
+              expectedArrivaltime.getSeconds() < 10
+                ? "0" + expectedArrivaltime.getSeconds()
+                : expectedArrivaltime.getSeconds();
+            const busExpectedTime =
+              busExpectedHours +
+              ":" +
+              busExpectedMinutes +
+              ":" +
+              busExpectedSeconds;
+            document.querySelector(
+              "#expectedArrivaltime" + busTemplate
+            ).innerText = "Kommer " + busExpectedTime;
+
+            // Display delay using data.stopPlace.estimatedCalls.expectedArrivalTime - data.stopPlace.estimatedCalls.aimedArrivalTime
+            const delay = Math.round(
+              (expectedArrivaltime - new Date(firstBus.aimedArrivalTime)) / 1000
+            );
+
+            if (delay > 0) {
+              // if delay is more than 60 seconds, display minutes as well
+              if (delay > 60) {
+                const minutes = Math.floor(delay / 60);
+                const seconds = delay % 60;
+                document.querySelector("#delay" + busTemplate).innerText =
+                  "Forsinkelse: " + minutes + " min " + seconds + " sek";
+              } else {
+                document.querySelector("#delay" + busTemplate).innerText =
+                  "Forsinkelse: " + delay + " sekunder";
+              }
+            } else {
+              document.querySelector("#delay" + busTemplate).innerText =
+                "Ingen forsinkelse";
+            }
+
+            expectedArrivaltimeList[busTemplate - 1] = expectedArrivaltime; // update array with expected arrival time
+          }
+        };
+        xhr.send(atGloshaugen ? atGloshaugenQuery : atMoholtQuery);
+      }
+
+      function updateDataWrapper() {
+        if (localStorage.getItem("checkboxValue") !== "true") {
+          updateData(1);
+        } else {
+          // call updateData twice, once for each stop
+          atGloshaugen = false;
+          updateData(1);
+          atGloshaugen = true;
+          updateData(2);
+        }
+      }
+
+      // Set an interval for always keeping time up to date
+      // Entur API limits us to 4 requests per minute
+      // We can fetch data every 15 seconds
+      setInterval(updateDataWrapper, 15000);
+
+      function updateClock(busTemplate) {
+        const expectedArrivaltime = expectedArrivaltimeList[busTemplate - 1];
+        const date = new Date();
+        const hours = date.getHours();
+        const minutes =
+          date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        const seconds =
+          date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+        const time = hours + ":" + minutes + ":" + seconds;
+        document.querySelector("h1").innerText = time;
+
+        // Show time since last fetch, rounded to one decimal
+        // add zero if needed
+        const diff = Math.round((date - lastUpdate) / 100) / 10;
+        if (diff.toString().indexOf(".") == -1) {
+          document.querySelector("#tidsiden").innerText =
+            "Oppdatert for " + diff + ".0 sek";
+        } else {
+          document.querySelector("#tidsiden").innerText =
+            "Oppdatert for " + diff + " sek";
+        }
+
+        // if expectedArrivaltime is not set, return
+        if (expectedArrivaltime === undefined) {
+          return;
+        }
+
+        // Split remaining time into minutes and seconds
+        const remaining = Math.round((expectedArrivaltime - date) / 1000);
+        // convert to minutes and seconds
+        const minutesRemaining = Math.floor(remaining / 60);
+        const secondsRemaining = remaining % 60;
+
+        // Show when bus will arrive
+
+        const timeToLeaveElement = document.querySelector(
+          "#timetoleave" + busTemplate
+        );
+        timeToLeaveElement.innerText =
+          "AVREISE: " + minutesRemaining + " MIN " + secondsRemaining + " SEK";
+
+        // red if less than 2 minute, yellow if less than 4 minutes
+
+        if (minutesRemaining < 0) {
+          timeToLeaveElement.innerText = "BUSS VED HOLDEPLASS";
+          timeToLeaveElement.style.color = "red";
+        } else {
+          if (minutesRemaining < 2) {
+            timeToLeaveElement.style.color = "red";
+          } else if (minutesRemaining < 4) {
+            timeToLeaveElement.style.color = "rgb(245, 111, 34)";
+          } else {
+            timeToLeaveElement.style.color = "var(--green-color)";
+          }
+
+          // if less than a minute, only show seconds
+          if (minutesRemaining < 1) {
+            timeToLeaveElement.innerText =
+              "AVREISE: " + secondsRemaining + " SEKUNDER";
+          } else {
+            timeToLeaveElement.innerText =
+              "AVREISE: " +
+              minutesRemaining +
+              " MIN " +
+              secondsRemaining +
+              " SEK";
+          }
+        }
+      }
+
+      function updateClockWrapper() {
+        if (localStorage.getItem("checkboxValue") !== "true") {
+          updateClock(1);
+        } else {
+          // call updateData twice, once for each stop
+          updateClock(1);
+          updateClock(2);
+        }
+      }
+
+      // Update clock in header every second using ES5
+      setInterval(updateClockWrapper, 100);
+
+      // Determine position code from lat and lon
+      // this is used to determine if we are closer to Gløshaugen or Moholt
+      function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+        var R = 6371; // Radius of the earth in km
+        var dLat = deg2rad(lat2 - lat1); // deg2rad below
+        var dLon = deg2rad(lon2 - lon1);
+        var a =
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(deg2rad(lat1)) *
+            Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon / 2) *
+            Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c; // Distance in km
+        return d;
+      }
+
+      function deg2rad(deg) {
+        return deg * (Math.PI / 180);
+      }
+
+      if (localStorage.getItem("checkboxValue") !== "true") {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          var userLat = position.coords.latitude;
+          var userLon = position.coords.longitude;
+
+          var gloshaugen = { lat: 63.4163744, lon: 10.4057093 };
+          var moholt = { lat: 63.4115491, lon: 10.4307127 };
+
+          var distanceToGloshaugen = getDistanceFromLatLonInKm(
+            userLat,
+            userLon,
+            gloshaugen.lat,
+            gloshaugen.lon
+          );
+          var distanceToMoholt = getDistanceFromLatLonInKm(
+            userLat,
+            userLon,
+            moholt.lat,
+            moholt.lon
+          );
+
+          if (distanceToGloshaugen < distanceToMoholt) {
+            console.log("Gloshaugen is closer");
+            atGloshaugen = true;
+          } else {
+            console.log("Moholt is closer");
+            atGloshaugen = false;
+          }
+
+          // Fetch data on location known
+          updateDataWrapper();
+        });
+      } else {
+        updateDataWrapper();
+      }
+    </script>
+  </body>
+</html>

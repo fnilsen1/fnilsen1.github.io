@@ -7,7 +7,6 @@ import sys
 pygame.init()
 pygame.mixer.init()
 pygame.font.init()
-   
 
 class Ship:
   """

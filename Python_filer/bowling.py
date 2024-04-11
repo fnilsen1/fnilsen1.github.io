@@ -1,5 +1,5 @@
 #Importerer bibliotek
-from tkinter.tix import Balloon
+# from tkinter.tix import Balloon
 import pygame as pg
 from pygame import mixer
 import math as m

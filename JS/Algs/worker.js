@@ -53,6 +53,6 @@ function generate_upto(n) {
 console.log(algs_arr);
 console.log(algs_arr.length);
 }
-generate_upto(7)
+generate_upto(6)
 
 

@@ -1,5 +1,16 @@
-def funk(tall):
-    tall = tall/2
 
-tall = 10
-print(funk(tall))
+liste = ["F2 B R' F' U L F2 U' B2 U L2 D' F2 D' B' D B D'", "F2 B R' F' U L F2 D' R2 U B2 D' L2 U' B' D B D'", "F' B U2 F2 D' R2 U' R U2 B U' R F2 U' D' R' D2 L2", "B D' L F' B D R' B2 U F' D' F2 D F B' L' D2 L'", "U2 F U' D2 B' U R B' U F2 U2 R' D2 L2 F' B' R B2", "U L2 F' B2 R' B2 L2 U L B' D R2 D' R' D2 B2 R L", "U' L B' L' U2 F' D B R' F B2 D F' U D L2 F B", "U2 D B2 D' L2 D L F' D' B2 D' L F2 B' U2 R D' B U", "U2 B2 U2 F2 L' U F' L F D2 B2 L B' D2 L' R' B' R2 U", "R' F' R2 F' R D2 F' R2 B' R2 B' D B2 U R U' F2 B' U", "R' F' R2 F' R D2 B' D2 B' D2 F' D B2 U R U' F2 B' U", "L2 B R' U2 B2 L F L B' D' F2 L' F R' L F D2 F2 U", "L2 F' U D L' B2 L D L B L B L' B' R2 F' U R' U2", "L2 F' U D' B2 R2 F2 R2 D' B' R' B L2 B2 R' U' F' R' U2", "L2 F' L2 B2 R2 U D' R2 D' B' R' B L2 B2 R' U' F' R' U2", "F2 D2 L2 B' L F' U' R U L U' D B D B R2 B' L2 U2", "F2 B U R' U' D' F U F' D' R' B D' F' L2 F B2 R' U2", "F' L F2 U' R D' L D F' U D2 L' B' U F' R' U' B2 U2", "B2 D' B' R' U' L' D B2 U R' F R2 U' B L2 B' D' B2 U2", "R U D2 F' D' R' F2 L D L F L F D' L U F' B U'", "F2 D2 B' U2 R' F U' F U2 F U2 R2 U2 F D2 B' R B U'", "F2 R D2 F' L2 B2 D2 L2 D' R B L' F2 B R2 U' L F' U'", "B2 D' L2 B2 D2 F U R2 B' R D2 L2 F' U2 R2 D B2 R U'", "L' B2 R2 B' L' F R2 D B' L U B2 R' L2 F' B D2 R2 D2", "F' L2 D' R' B' D2 R' L B2 R2 U B2 D' B R F' U2 R2 D2", "F' L2 D' R' B' R2 D2 R' L B2 U B2 D' B R F' U2 R2 D2", "B L' F' D' L' D2 L' U2 D L' U L2 F' B2 D' F' R2 L' D2", "F2 B R' U F2 L D F' D2 R2 U B2 D' L2 U' B' D B D'", "U2 B D2 B2 D' L' F' U2 F2 L2 F D' L U' L U2 L B2 R", "L U' F U2 B L2 U2 B' U D' L' U2 L' B2 D L2 B U' R", "L U' B L F' L F' U2 D2 R2 F R2 B' U R D2 L2 B R", "L B D2 B2 U' F' U2 R' F' R' D' L2 U' F D' L2 U2 B' R", "F' U L U F2 L2 B' D R2 D F' B2 D' F' D' F L' F R", "U R' L2 B2 R' F' R B' D' F' U2 R' U2 F B U2 B2 D2 R2", "U R' L2 B2 R' F' R B' D' F' U2 R' F2 R2 F' B' R2 D2 R2", "F2 B D2 B' D2 R2 F L' U F2 L D F2 R' U F' D2 F R2", "R2 B2 U B' L2 B2 D' B2 U D F U' L' F2 D B R2 F2 R'", "U B U' L2 U R' U2 F' U2 R U' F' R2 B2 D R' U B' L2", "D2 F D' R U2 B R F2 D' R' F' R' L' U R L2 B2 U' L2", "D2 F B' U2 F D L F' L2 B D' L U R U F U D L2", "R2 D F' U' F2 L B R' F2 L R2 U' F L' D2 U' L D L2", "B' D2 B' U' B2 U F' R B' D2 B R F' R B' R F U L2", "R B U F2 L' U2 B L2 B' R' B2 U2 B L2 D2 L2 U' B' L'", "R' D2 B' D' R B D2 R L2 D2 U R2 F L' B' L2 D' U' L'", "B D' R U' D F2 B' D' L2 B R' F' R2 B D' U R' D2 L'", "B' D' B2 R2 B2 R2 D' R' D' L D' F U' B2 R D' U2 B L'", "D R L2 U' D' F L2 D' L' D' R L2 D L2 B R2 U' L' F2", "R2 D' L D L F R2 U F' R2 B' R2 B2 R D F2 U2 D' F2", "F L' D' B2 D F R' L2 U F' B' L2 U' F2 B' D' R' L2 F2", "F B R' D R F2 U2 R2 D F' U B' R U F B' R L F2", "F B L' U' L2 F2 R B' L2 F' D F' U L2 U2 R2 L2 D' F2", "F B L' U' L2 F2 R B' L2 F' D F' U' R2 L2 D2 L2 D F2", "F' R2 F2 L' D F2 B' L' F B' U2 D2 R D' L D2 B2 D' F2", "R B2 U' R' D2 L' F' R F B' U B2 D2 F R2 F2 U L' F'", "L D' L U' B' L2 U D' L' F D' F B L2 F L2 U2 R' F'", "F2 D' R' U R U' F B' U2 L B' U B' D B R B2 U2 F'", "D' B R' L' F2 D2 R2 U L' B L2 U' B2 D B' F R2 D B", "R2 L2 D R' L2 U' F' U2 F' R' U2 L2 F L B' D2 L2 U' B", "L B L U' F' B' U2 F D R2 F' D R' F' U R2 D2 R B", "L2 F' U R2 D2 R2 L' F' D2 L' F2 D2 L2 U' L2 B' L D2 B", "F' U D B D F' U2 L' B L' U R U' F2 U R2 U L2 B", "U2 F D2 B2 R D B' D' B U F2 U2 R' D2 L2 F' B' R B2", "R U' B' U2 B R F D2 F L F2 D B R' D L' B U' B2", "F R2 F2 R2 U F' D R F D F2 L2 B2 R F U2 R' U B2", "F B D R' L D L D' F R D2 B2 L' U' R2 D2 L U2 B2", "R B L D' F B U2 B2 U L U2 R2 F' D U B' L U' B'", "F' U' R' L F R2 L' F' B R2 D2 R' F U' F U' F' L2 B'", "L' B2 R2 B' L' F R2 D B' L U B2 R' D2 R2 F' B U2 D2", "F2 D' B' U' R U' B2 U' B D' F' B' U2 L B2 R2 L' U2 D'", "R B' R' L F R2 L2 D F R F U' L2 F D2 L2 F' R2 L'", "L' F L F2 U' R' D2 F' R' F L2 U' F U' F B2 L F2 B2"]
+
+# def func(liste):
+#     return alg.count("B")+alg.count("L")
+
+
+
+# liste.sort(reverse=True|False, key=func)
+liste.sort(key= lambda x: x.count("L")+x.count("B"))
+
+# for alg in liste:
+#     print(alg.count("B")+alg.count("L"))
+
+for alg in liste:
+    print(alg)

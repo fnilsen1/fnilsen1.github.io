@@ -1,0 +1,64 @@
+* {
+  margin: 0%;
+  font-size: 20px;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  font-size: 15px;
+  background-image: url("Images/war.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#nav {
+  background-color: rgb(40, 40, 36);
+  align-items: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  /* position: fixed; */
+  width: 100%;
+  /* z-index: 1; */
+}
+
+.navEl {
+  padding: 20px 50px 20px 50px;
+}
+.navEl:hover {
+  background-color: #111;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+a {
+  font-size: 1.2em;
+  color: white;
+  text-decoration: none;
+}
+
+#skjema {
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  opacity: 75%;
+}
+
+.input,
+button {
+  color: black;
+  margin-top: 20px;
+  height: 50px;
+  width: 200px;
+}

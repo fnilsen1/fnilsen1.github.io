@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="addEvent.css" />
+    <title>Tidslinje</title>
+  </head>
+  <body>
+    <div id="container">
+      <nav id="nav">
+        <div class="navEl"><a href="logIn.html">Logg ut</a></div>
+        <div class="navEl"><a href="tidslinje.html">Tidslinje</a></div>
+        <div class="navEl" ><a href="addEvent.html">Legg til hendelse</a></div>
+      </nav>
+
+      <div id="skjema">
+        <input type="text" placeholder="Hendelse" class="input" id="event" />
+        <input type="text" placeholder="Startår" class="input" id="start" />
+        <button id="addEvent" onclick="leggTilHendelse()">Legg til ny hendelse</button>
+      </div>
+    </div>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="addEvent.js"></script>
+</html>
