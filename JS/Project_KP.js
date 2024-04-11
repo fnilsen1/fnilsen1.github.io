@@ -1,4 +1,0 @@
-function generate_algs(){
-
-    
-}
