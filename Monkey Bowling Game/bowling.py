@@ -17,9 +17,9 @@ speed = 1
 angle = 90
 
 #Laster inn musikkfilene. (0) er kanalen hvor lyden blir spilt av. Dette er for flere spor samtidig
-pg.mixer.music.load("Python_filer/coconut_mall.mp3")
-pg.mixer.music.load("Python_filer/monkey_sound.mp3")
-pg.mixer.Channel(0).play(pg.mixer.Sound('Python_filer/coconut_mall.mp3'))
+pg.mixer.music.load("coconut_mall.mp3")
+pg.mixer.music.load("monkey_sound.mp3")
+pg.mixer.Channel(0).play(pg.mixer.Sound('coconut_mall.mp3'))
 
 #Dette er en klasse med mange attributter. Dette er i stedet for å bruke global variabler
 class Game_stats:
@@ -224,7 +224,7 @@ def kollisjon():
 
         
         if(game_state.pins_knocked == 10 and game_state.runde % 2 != 0):
-            pg.mixer.Channel(1).play(pg.mixer.Sound('Python_filer/monkey_sound.mp3'))
+            pg.mixer.Channel(1).play(pg.mixer.Sound('monkey_sound.mp3'))
             if(game_state.runde<18):
 
                 game_state.runde += 1
@@ -244,10 +244,10 @@ pins = [Pin(227, 200, 20, False, vindu), Pin(197, 150, 20, False, vindu), Pin(25
 line = Line((227, 630), (227, 500))
 
 #Vi laster inn, skalerer og viser bilder
-monke = pg.image.load('Python_filer/monke.png')
-score = pg.image.load('Python_filer/bowling_score.png')
+monke = pg.image.load('monke.png')
+score = pg.image.load('bowling_score.png')
 score = pg.transform.scale(score, (820, 100))
-mittBilde = pg.image.load('Python_filer/lane.png')
+mittBilde = pg.image.load('lane.png')
 mittBilde = pg.transform.scale(mittBilde, (450, 720))
 
 # Gjenta helt til brukeren lukker vinduet

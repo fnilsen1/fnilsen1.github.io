@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #6a5acd;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.shop {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.shop .item {
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+}
+
+.shop .item img {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.buy-button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #6a5acd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.buy-button:hover {
+    background-color: #5a4db2;
+}
+
+.video {
+    text-align: center;
+    margin: 40px 0;
+    flex: 1; /* Ensures this section grows to fill available space */
+}
+
+.video-container {
+    display: inline-block;
+    width: 100%;
+    max-width: 560px;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 420px; /* Increased height from 315px to 420px */
+    border-radius: 10px;
+}
+
+footer {
+    background-color: #6a5acd;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto; /* Pushes the footer to the bottom of the page */
+}

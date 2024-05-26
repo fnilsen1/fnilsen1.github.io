@@ -124,8 +124,8 @@ def lookup():
 # lookup()
 
 def solve_dr(scramble):
-    file_path = 'Python\Kociemba\\1_6movers.txt'
-    with open('Python\Kociemba\\DR_lookup.json') as file:
+    file_path = 'Python Projects\Kociemba\\1_6movers.txt'
+    with open('Python Projects\Kociemba\\DR_lookup.json') as file:
         data = json.load(file)
         
     states.dr_state=dr_solved.copy()
@@ -159,8 +159,8 @@ def solve_dr(scramble):
         file.close()
 
 def solve():
-    file_path = 'Python\Kociemba\\dr7movers.txt'
-    with open('Python\Kociemba\phase2_lookup_moveset.json') as file:
+    file_path = 'Python Projects\Kociemba\\dr7movers.txt'
+    with open('Python Projects\Kociemba\phase2_lookup_moveset.json') as file:
         data = json.load(file)
         
     states.cube_state=states.cube_state.copy()
@@ -199,11 +199,11 @@ def solve():
 # "B' L2 D2 L2 R2 B' R2 F U2 R2 L U' B' D' F' D' U' B' L" 
 # ]r
 
-scramble_list = [
-"F2 B2 U' L D2 L2", 
-"R D2 L B2 L2 B2", 
+# scramble_list = [
+# "F2 B2 U' L D2 L2", 
+# "R D2 L B2 L2 B2", 
 
-]
+# ]
 
 # def solve_scrambles(list):
 # index_copy = index_state.copy()
@@ -224,7 +224,8 @@ scramble_list = [
 #     solve_dr(scramble_list[i])
 
 # solve_scrambles(scramble_list)
-solve_dr("R2 B2 U' R2 D' F2 R2 F2 D2 U' R2 D L' F2 U B L D F' L' U2")
+solve_dr("L2 R2 F2 L' R' D2 R L F2 U' D F2 U2 D2 L2 R2 F2 D' R L D'")
 
 
 
+# Python Projects\Kociemba\DR_lookup.json
