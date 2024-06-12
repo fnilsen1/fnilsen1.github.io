@@ -1,4 +1,5 @@
 import json
+import time
 
 index_state = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
 solved_colors = ['⬜', '⬜', '⬜', '⬜', '⬜', '⬜', '⬜', '⬜', '⬜', '🟧', '🟧', '🟧', '🟧', '🟧', '🟧', '🟧', '🟧', '🟧', '🟩', '🟩', '🟩', '🟩', '🟩', '🟩', '🟩', '🟩', '🟩', '🟥', '🟥', '🟥', '🟥', '🟥', '🟥', '🟥', '🟥', '🟥', '🟦', '🟦', '🟦', '🟦', '🟦', '🟦', '🟦', '🟦', '🟦', '🟨', '🟨', '🟨', '🟨', '🟨', '🟨', '🟨', '🟨', '🟨']
@@ -99,7 +100,7 @@ def lookup():
     obj = {}
 
     file_path = 'Python\Kociemba\\dr7movers.txt'
-
+   
     with open(file_path, 'r') as file:
         # Iterate over each line in the file
         for line in file:
@@ -124,6 +125,7 @@ def lookup():
 # lookup()
 
 def solve_dr(scramble):
+    t = time.time()
     file_path = 'Python Projects\Kociemba\\1_6movers.txt'
     with open('Python Projects\Kociemba\\DR_lookup.json') as file:
         data = json.load(file)
@@ -224,7 +226,7 @@ def solve():
 #     solve_dr(scramble_list[i])
 
 # solve_scrambles(scramble_list)
-solve_dr("L2 R2 F2 L' R' D2 R L F2 U' D F2 U2 D2 L2 R2 F2 D' R L D'")
+solve_dr("F2 U' F' R2 U F2 L2 D2 R L2 B' D2 B' U2 D2 B2 R2 U2 F'")
 
 
 
