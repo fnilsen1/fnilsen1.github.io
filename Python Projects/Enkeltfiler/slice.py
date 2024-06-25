@@ -23,6 +23,8 @@ S-slice: UL UR DR DL (det er en annen option)
 #Flere?
 slice_combos_3e = ["E E'", "E' E", "E2 E2 E' E", "E2 E' E E2", "E2 E E' E2", "E2 E' E2 E", "E2 E E2 E'", "E' E2 E2 E", "E' E E2 E2", "E' E2 E E2", "E E2 E2 E'", "E E2 E' E2", "E E' E2 E2", "E E2 E E'"]
 slice_combos_2e2e = ["E2 E2", "E E E2", "E' E' E2", "E2 E E", "E2 E' E'", "E E2 E", "E' E2 E'"]
+
+
 slice_dict = {
     
     "R2":[1,2],
@@ -192,7 +194,7 @@ def main():
     # solve_slice("m", "3e", "F2 B2 D2", "L B2 R' B2 R U2 R' U2 F2 R2")
     # solve_slice("m", "3e", "F2 R2", "F2 D' B2 L2 D' B F' U2 F' B' D2")
     # solve_slice("s", "2e2e", "D2", "D2 F2 L2 F' L2 F U2 R2 F2 L2 D2")
-    solve_slice("e", "2e2e", "F2 R2 B2", "D' F2 D' R2 D2 L2 B2 D F2 D' L2 B2")
+    solve_slice("m", "2e2e", "F2", "L D2 F2 R' D2 R' L2")
 
     # solve_slice(a,b,c,d)
     # print(insert_elements_in_list("U2 F2 U R2 D' B2 L2 U2 B2 L2 B2".split(), [1,5], ["E","E'"]))

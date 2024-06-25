@@ -180,6 +180,7 @@ def solve():
             # Iterate over each line in the file
             for line in file:
                 line = line.strip()
+                print(line)
                 apply_alg(line)
                 if ''.join(states.cube_state) in data:
                     print(line+" "+data[''.join(states.cube_state)])
@@ -226,7 +227,8 @@ def solve():
 #     solve_dr(scramble_list[i])
 
 # solve_scrambles(scramble_list)
-solve_dr("F2 U' F' R2 U F2 L2 D2 R L2 B' D2 B' U2 D2 B2 R2 U2 F'")
+
+solve_dr("L2 D2 L2 F R2 D2 U2 B' F' R2 F' D' F D2 R' B2 R F2 D R")
 
 
 
