@@ -143,25 +143,15 @@ def rank(alg):
     return count
 
 
-# list = []
-with open(r"Python\tekstfiler\w.txt", "r") as file:
+list = []
+with open(r"C:\Users\filip\OneDrive - NTNU\Desktop\GitHub\fnilsen1.github.io\Python Projects\tekstfiler\F2_yperm.txt", "r") as file:
     a = file.readlines()
 print(a)
 
-# print(len(a))
-# print(list(a))
-# print(a)
-    
-for i in a:
-    count_list.append(rank(i))
 
 
-sorted_values_zip = [v for _, v in sorted(zip(count_list, a))]
 
-with open(r"Python\tekstfiler\w_S.txt", "w") as file:
-    file.writelines(sorted_values_zip)
-
-# liste = []
+liste = []
 
 replacements_y = {'R': 'F', 'L': 'B', 'F': 'L', 'B':'R'}
 replacements_y2 = {'R':'L', 'L':'R', 'F': 'B', 'B':'F'}
@@ -207,90 +197,96 @@ def more(string):
     a.append(copy)
 
 # for i in range(len(a)):
-#     print(i)
+#     # print(i)
 #     more(a[i])
     
 # for i in range(len(a)):
 #     insert_moves(a[i])
 
 
-# print(a)
+print(a)
 
-# a = set(a)
-# b = a.copy()
-# count = 0
-# for i in range(len(a)):
-#     if a[i].count("2")>4 or a[i].count("B")>0 or a[i].count("L")>0:
-#         del b[i-count]
-#         count+=1
+# # a = set(a)
+# # b = a.copy()
+# # count = 0
+# # for i in range(len(a)):
+# #     if a[i].count("2")>4 or a[i].count("B")>0 or a[i].count("L")>0:
+# #         del b[i-count]
+# #         count+=1
 
-    # if a[i].count("2")>0:
-    #     del b[i-count]
-    #     count+=1
+# #     if a[i].count("2")>0:
+# #         del b[i-count]
+# #         count+=1
     
 
-dict = {
-13: 0,
-14: 0,
-15: 0,
-16: 0,
-17: 0,
-18: 0
+# dict = {
+# 13: 0,
+# 14: 0,
+# 15: 0,
+# 16: 0,
+# 17: 0,
+# 18: 0
 
-}
+# }
 
-#Skal funke
+# #Skal funke
 # if f"({i})" in a[i]:
-#     print("yes")
+#     # print("yes")
 #     a[i] = a[i].replace(f" ({i})", "")
-# '
+
 # for i in range(len(a)):
-#     # b = a[i].split(" ")
-#     # # dict[len(b)]+=1
-#     # if b[0] == "U2" or b[0] == "U" or b[0] == "U'":
-#     #     del b[0]
+#     b = a[i].split(" ")
+#     # dict[len(b)]+=1
+#     if b[0] == "U2" or b[0] == "U" or b[0] == "U'":
+#         del b[0]
 
 
-#     # if b[-1] == "U2\n" or b[-1] == "U\n" or b[-1] == "U'\n":
-#     #     b[-1] = "\n"
+#     if b[-1] == "U2\n" or b[-1] == "U\n" or b[-1] == "U'\n":
+#         b[-1] = "\n"
 
         
 
-#     # a[i] = " ".join(b)
+#     a[i] = " ".join(b)
 
-    # if "(11)" in a[i]:
-    #     a[i] = a[i].replace(" (11)", "")
+#     if "(11)" in a[i]:
+#         a[i] = a[i].replace(" (11)", "")
 
-    # elif "(12)" in a[i]:
-    #     a[i] = a[i].replace(" (12)", "")
-
-
-
-    # elif "(13)" in a[i]:
-    #     a[i] = a[i].replace(" (13)", "")
-
-    # elif "(14)" in a[i]:
-    #     a[i] = a[i].replace(" (14)", "")
-    # elif "(15)" in a[i]:
-    #     a[i] = a[i].replace(" (15)", "")
-    # elif "(16)" in a[i]:
-    #     a[i] = a[i].replace(" (16)", "")
-
-    # elif "(17)" in a[i]:
-    #     a[i] = a[i].replace(" (17)", "")
+#     elif "(12)" in a[i]:
+#         a[i] = a[i].replace(" (12)", "")
 
 
-    # elif "(18)" in a[i]:
-    #     a[i] = a[i].replace(" (18)", "")
+
+#     elif "(13)" in a[i]:
+#         a[i] = a[i].replace(" (13)", "")
+
+#     elif "(14)" in a[i]:
+#         a[i] = a[i].replace(" (14)", "")
+#     elif "(15)" in a[i]:
+#         a[i] = a[i].replace(" (15)", "")
+#     elif "(16)" in a[i]:
+#         a[i] = a[i].replace(" (16)", "")
+
+#     elif "(17)" in a[i]:
+#         a[i] = a[i].replace(" (17)", "")
+
+
+#     elif "(18)" in a[i]:
+#         a[i] = a[i].replace(" (18)", "")
         
+for i in a:
+    count_list.append(rank(i))
 
-# sorted_values_zip = [v for _, v in sorted(zip(order, values))]
-# print("Sorted based on order:", sorted_values_zip)
+
+sorted_values_zip = [v for _, v in sorted(zip(count_list, a))]
+
+with open(r"C:\Users\filip\OneDrive - NTNU\Desktop\GitHub\fnilsen1.github.io\Python Projects\tekstfiler\F2_yperm.txt", "w") as file:
+    file.writelines(sorted_values_zip)
         
 # for i in range(len(a)):
 #     a[i]=a[i].strip()+"\n"
 
 
-# a = set(a)
-# with open(r"Python\tekstfiler\w.txt", "w") as file:
+# # a = set(a)
+# with open(r"C:\Users\filip\OneDrive - NTNU\Desktop\GitHub\fnilsen1.github.io\Python Projects\tekstfiler\T_zbll_diag.txt", "w") as file:
 #     file.writelines(list(a))
+
