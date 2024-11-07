@@ -41,7 +41,7 @@ slice_dict = {
     "M'":[[0,3],[0,2], [0,1]],
     "M2":[[0,2],[1,3]],   
     "S":[[0,1],[0,2], [0,3]],
-    "S''":[[0,3],[0,2], [0,1]],
+    "S'":[[0,3],[0,2], [0,1]],
     "S2":[[0,2],[1,3]]
 }
 
@@ -158,11 +158,14 @@ def insert_elements_in_list(original_list, index_list, element_list):
     for i in range(len(sorted_tuple_list)):
         copied_list.insert(sorted_tuple_list[i][0]+i, sorted_tuple_list[i][1])
 
+
     return copied_list
 
 def insert_slices(slice_amount, insertion_spots, insertion_moves, move_list, starting_state, slice_type):
     permutations = set(itertools.combinations(insertion_spots, slice_amount))
+    # print(permutations)
     copy_starting_state = tuple(starting_state)
+
     for k in list(permutations):
         # print("new")
         state = list(copy_starting_state)
@@ -170,12 +173,14 @@ def insert_slices(slice_amount, insertion_spots, insertion_moves, move_list, sta
         # print(insertion_moves.split())
 
         # print(insert_elements_in_list(move_list, list(k), insertion_moves.split()))
+        # print(" ".join(insert_elements_in_list(move_list, list(k), insertion_moves.split())))
         for v in insert_elements_in_list(move_list, list(k), insertion_moves.split()):
             
             # print(v)
             state = apply_move(slice_type, state, v)
             # print(state)
-        # print(" ".join(insert_elements_in_list(move_list, list(k), insertion_moves.split())))
+        
+        # print(state)
         if(state == [1,2,3,4]):
             print(" ".join(insert_elements_in_list(move_list, list(k), insertion_moves.split())))
 
@@ -205,7 +210,8 @@ def main():
     d = input("Input DR sequence: ")
     solve_slice(a, b, c, d)
 
-    # solve_slice(a,b,c,d)
+
+    # solve_slice(a,b,c,d)  
     # print(insert_elements_in_list("U2 F2 U R2 D' B2 L2 U2 B2 L2 B2".split(), [1,5], ["E","E'"]))
     # insert_elements_in_list([1], ["e","r","d", "o", "d"],[1,5,3,2,8])
 
@@ -214,3 +220,152 @@ def main():
 
 
 main()
+
+#Add klassen tilbake
+# def searchInsert(nums, target):
+
+#     middle_index = round(len(nums)/2)-1
+#     id = middle_index
+#     while len(nums)>2:
+
+#         if(nums[middle_index]>=target):
+ 
+#             nums = nums[:middle_index+1]
+#             print(nums)
+#             middle_index = round(len(nums)/2)-1
+#             id-=middle_index-1
+
+#         else:
+#             print("ayooo")
+#             nums = nums[middle_index+1:]
+#             print(nums)
+#             middle_index = round(len(nums)/2)-1
+#             print(middle_index)
+#             id+=middle_index+1
+
+#     if(nums[0]==target):
+#         return id
+    
+#     else:
+#         return id+1
+
+# print(searchInsert([1,3,5,6], 4))
+
+#burde ha egen liste med indekser
+    
+# class Solution(object):
+#     def maximumSubarraySum(self, nums, k):
+#         ordbok = {}
+#         maximum = float("-inf")
+#         no_good = True
+#         for i in range(len(nums)):
+#             if nums[i] in ordbok:
+#                 no_good = False
+#                 for j in ordbok[nums[i]]:
+#                     maximum = max(maximum, sum(nums[j: i+1]))
+
+#             if nums[i]+k not in ordbok:
+#                 ordbok[nums[i]+k] = []
+
+#             if nums[i]-k not in ordbok:
+#                 ordbok[nums[i]-k] = []
+
+#             if nums[i]+k in ordbok:
+#                 ordbok[nums[i]+k].append(i)
+
+#             if nums[i]-k in ordbok:
+#                 ordbok[nums[i]-k].append(i)
+
+#         if no_good:
+#             return 0
+#         else:
+#             print(maximum)
+
+# # [1,2,3,4,5]
+# solution = Solution()
+
+# nums= [4,7,3,5,5]
+# # nums = [-636,-784,-356,-832,-797,-978,-651,-667,-907,-900,-168,-697,-879,-998,-126,-900,-542,-553,-268,-374,-710,-768,-727,-975,-106,-756,-462,-815,-276,-163,-301,-822,-367,-685,-581,-488,-763,-612,-847,-730,-479,-874,-221,-912,-229,-543,-876,-845,-424,-215,-819,-164,-840,-525,-987,-291,-658,-168,-382,-781,-951,-396,-228,-394,-445,-863,-290,-675,-289,-950,-885,-228,-624,-236,-437,-246,-302,-741,-243,-419,-851,-980,-667,-661,-140,-893,-328,-354,-359,-845,-396,-309,-450,-941,-310,-119,-614,-854,-599,-605]
+# solution.maximumSubarraySum(nums, 2)
+# for i in range(len(nums)-1):
+#     for j in range(1+i, len(nums)):   
+#         if(abs(nums[j]-nums[i])==8):
+#             print(i, " : ", nums[i]," ", j, " : ", nums[j])
+#             print(sum(nums[i:j+1]))
+
+#[-1, 3, 2]
+#[2,4,5]
+
+
+
+
+
+#Timed out
+# class Solution(object):
+#     def maximumSubarraySum(self, nums, k):
+#         ordbok = {}
+#         maximum = float("-inf")
+#         no_good = True
+#         for i in range(len(nums)):
+#             if nums[i] in ordbok:
+#                 no_good = False
+#                 for j in ordbok[nums[i]]:
+#                     maximum = max(maximum, sum(nums[j: i+1]))
+
+#             if nums[i]+k not in ordbok:
+#                 ordbok[nums[i]+k] = []
+
+#             if nums[i]-k not in ordbok:
+#                 ordbok[nums[i]-k] = []
+
+#             if nums[i]+k in ordbok:
+#                 ordbok[nums[i]+k].append(i)
+
+#             if nums[i]-k in ordbok:
+#                 ordbok[nums[i]-k].append(i)
+
+#         if no_good:
+#             return 0
+#         else:
+#             return maximum
+
+
+# class Solution(object):
+#     def maximumSubarraySum(self, nums, k):
+#         ordbok = {}
+#         maximum = float("-inf")
+#         no_good = True
+#         for i in range(len(nums)):
+#             if nums[i]-k in ordbok:
+#                 no_good = False
+#                 for j in ordbok[nums[i]-k]:
+#                     maximum = max(maximum, sum(nums[j: i+1]))
+
+#             if nums[i]+k in ordbok:
+#                 no_good = False
+#                 for v in ordbok[nums[i]+k]:
+#                     maximum = max(maximum, sum(nums[v: i+1]))
+
+#             if nums[i] not in ordbok:
+#                 ordbok[nums[i]] = []
+
+#             if nums[i] in ordbok:
+#                 ordbok[nums[i]].append(i)
+
+#         if no_good:
+#             return 0
+#         else:
+#             return maximum
+
+
+# class Solution:
+#     def minMovesToCaptureTheQueen(self, a: int, b: int, c: int, d: int, e: int, f: int) -> int:
+#         if (a==e or b==f) and not (((c==a) and ((d>b and d<f) or (d>f and d<b))) or ((d==b) and ((c>a and c<e) or (c>e and c<a)))):
+#             return 1
+
+#         elif abs(c-e) == abs(d-f) and not (abs(a-c) == abs(b-d) and ((a>e and a<c) or (a>c and a<e))):
+#             return 1
+
+#         else:
+#             return 2
+

@@ -24,7 +24,10 @@
             
 # print(count)
 
-sum = 0
-for i in range(1000000000):
-    sum+=i
-print(sum)
+# sum = 0
+# for i in range(1000000000):
+#     sum+=i
+# print(sum)
+
+a = "aaayeahaaa"
+print("yeah" in a)
