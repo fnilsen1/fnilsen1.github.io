@@ -87,12 +87,12 @@ def lookup():
             obj[''.join(states.cube_state)]=alg_list.alg_list[i]
 
 
-    filnavn = "Python\Solver\\algs.json"
+    filnavn = "algs.json"
     with open(filnavn, "w") as fil:
         fil.write(json.dumps(obj, indent = 2))
 
 # lookup()
-with open(r'Python\Solver\algs.json') as file:
+with open('algs.json') as file:
     data = json.load(file)
     
 def solve(scramble):
