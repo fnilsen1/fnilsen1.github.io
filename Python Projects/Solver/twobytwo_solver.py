@@ -97,7 +97,11 @@ def lookup():
         fil.write(json.dumps(obj, indent = 2))
 
 # lookup()
+<<<<<<< HEAD:Python Projects/Solver/2x2.py
+with open('algs.json') as file:
+=======
 with open("algs.json") as file:
+>>>>>>> 910fda8dffe3fbfa06c75c4ceab48e5bd5909afd:Python Projects/Solver/twobytwo_solver.py
     data = json.load(file)
     
 def solve(scramble):
