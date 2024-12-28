@@ -125,13 +125,13 @@ print(len(stemme_liste))
 # for e in sorted(b):print e
 # #Fjern parentes
 
-a,b=[],[]
-s='<8:5?3219;=7:4?9=1>;:25674?961>5342978;=61>99'+'46;2=7?831<9'*2+'8'
-for k in s:
- y=ord(k)-48
- if y in a:
-	if len(a)>11:b+=[a]
-	a=a[a.index(y)+1:]
- a+=[y]
-for e in sorted(b):print e
+# a,b=[],[]
+# s='<8:5?3219;=7:4?9=1>;:25674?961>5342978;=61>99'+'46;2=7?831<9'*2+'8'
+# for k in s:
+#  y=ord(k)-48
+#  if y in a:
+# 	if len(a)>11:b+=[a]
+# 	a=a[a.index(y)+1:]
+#  a+=[y]
+# for e in sorted(b):print e
 
