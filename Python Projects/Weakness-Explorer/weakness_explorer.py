@@ -43,7 +43,7 @@ def analyse(pgnFile, colorOfPlayer):
             
         returnFromPGN()
 
-        engine = chess.engine.SimpleEngine.popen_uci("stockfish-windows-2022-x86-64-avx2.exe")
+        engine = chess.engine.SimpleEngine.popen_uci("stockfish_17.exe")
         def stockfish_evaluation(board, time_limit = 0.01):
 
             result = engine.analyse(board, chess.engine.Limit(time=time_limit))
