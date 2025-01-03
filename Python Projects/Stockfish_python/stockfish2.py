@@ -4,8 +4,10 @@ import json
 import re
 
 colorOfPlayer = 'White'
-pgnFile = "Python\Stockfish_python\PGNs\einarkvamlundberg-white.pgn"
-fileName = "Einar_hvit_analyse"
+#endre path
+pgnFile = r"PGNs\vetles05-white.pgn"
+#endre navn
+fileName = "vetle_hvit_analyse"
 urls = []
 games = []
 
@@ -34,7 +36,7 @@ def analyse(pgnFile, colorOfPlayer):
             
         returnFromPGN()
 
-        engine = chess.engine.SimpleEngine.popen_uci("Python\Stockfish_python\stockfish-windows-2022-x86-64-avx2.exe")
+        engine = chess.engine.SimpleEngine.popen_uci("stockfish-windows-2022-x86-64-avx2.exe")
         def stockfish_evaluation(board, time_limit = 0.01):
 
             result = engine.analyse(board, chess.engine.Limit(time=time_limit))
@@ -92,7 +94,7 @@ def analyse(pgnFile, colorOfPlayer):
 
         # custom = pgnFile.split(".")[-2].split("/")[-1]
 
-        filnavn = "Python\Stockfish_python\out\\"+fileName+".json"
+        filnavn = fileName+".json"
         with open(filnavn, "w") as fil:
             fil.write(json.dumps(sorted_dict, indent = 4))
         fil.close()

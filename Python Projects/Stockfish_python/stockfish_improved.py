@@ -3,10 +3,10 @@ import chess.engine
 import json
 import re
 
-colorOfPlayer = 'Black'
-pgnFile = "Python\Stockfish_python\PGNs\jensenextender-white.pgn"
+colorOfPlayer = 'White'
+pgnFile = "PGNs\Hako2005-white.pgn"
 
-fileName = "Lucas_hvit_analyse"
+fileName = "Hakon_hvit_analyse"
 urls = []
 games = []
 
@@ -28,7 +28,7 @@ def returnFromPGN():
 
 returnFromPGN()
 
-engine = chess.engine.SimpleEngine.popen_uci("Python\Stockfish_python\stockfish-windows-2022-x86-64-avx2.exe")
+engine = chess.engine.SimpleEngine.popen_uci("stockfish-windows-x86-64-avx2.exe")
 def stockfish_evaluation(board, time_limit = 0.01):
 
     result = engine.analyse(board, chess.engine.Limit(time=time_limit))
@@ -80,7 +80,7 @@ sorted_dict = {k: v for k, v in sorted(dict.items(), key=lambda item: (-item[1][
 # sorted_dict1 = {k: v for k, v in sorted(dict.items(), key=lambda item: item[1]['count'], reverse=True)}
 # sorted_dict = {k: v for k, v in sorted(sorted_dict1.items(), key=lambda item: item[1]['eval'], reverse=(colorOfPlayer != 'White'))}
 
-filnavn = "Python\Stockfish_python\out\\"+fileName+".json"
+filnavn = "håkon_test"+".json"
 with open(filnavn, "w") as fil:
     fil.write(json.dumps(sorted_dict, indent = 4))
 print("Ferdig!")
