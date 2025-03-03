@@ -97,24 +97,22 @@ def lookup():
         fil.write(json.dumps(obj, indent = 2))
 
 # lookup()
-<<<<<<< HEAD:Python Projects/Solver/2x2.py
 with open('algs.json') as file:
-=======
-with open("algs.json") as file:
->>>>>>> 910fda8dffe3fbfa06c75c4ceab48e5bd5909afd:Python Projects/Solver/twobytwo_solver.py
     data = json.load(file)
     
 def solve(scramble):
     states.cube_state=solved.copy()
     apply_alg(scramble) 
     if ''.join(states.cube_state) in data:
+       
         print(data[''.join(states.cube_state)])
     else:
         for i in range(len(alg_list.alg_list)):
             apply_alg(alg_list.alg_list[i])
             if ''.join(states.cube_state) in data:
                 print(alg_list.alg_list[i]+" "+data[''.join(states.cube_state)])
-                return
+             
+
             else:
                 apply_alg(inverse(alg_list.alg_list[i]))
 

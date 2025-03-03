@@ -7,7 +7,10 @@ with open("learn_algs.txt") as file:
 
 while True:
     # print((algs[random.randint(0,len(algs)-1)].strip()+auf[random.randint(0, 3)]).strip())
-    solution = (algs[random.randint(0,len(algs)-1)].strip()+auf[random.randint(0, 3)]).strip()
+    solution = inverse((algs[random.randint(0,len(algs)-1)].strip()).strip())
     print(solution)
     scramble = solve(solution)
+    print(inverse(scramble))
     pause = input()
+
+#83981
