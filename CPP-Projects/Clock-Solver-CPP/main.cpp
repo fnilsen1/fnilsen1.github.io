@@ -5,6 +5,9 @@
 int main()
 {
 
+    //IMPORTANT: POINTER SHOULD BE PARAMETER IN FUNCTIONS
+    //For parallelization
+
     // State array is defined at the top
 
     /*
@@ -17,6 +20,10 @@ int main()
     // Alg: "UR,F,+5 U,B,-3"
 
     // generate_move_table();
+    // time_random_moves(1000000);
+    apply_moves("U,F,-1");
+    print_state();
+
 
     return 0;
 }

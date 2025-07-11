@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>PyScript Matplotlib Chart</title>
+
+    <!-- PyScript 2024.2.1 CSS & JS -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.2.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.2.1/core.js"></script>
+</head>
+<body>
+    <h1>📊 Matplotlib in PyScript</h1>
+    <p>Click the button to generate a Matplotlib graph in your browser.</p>
+
+    <!-- Button to generate the graph -->
+    <button py-onClick="plot_graph()">Generate Graph</button>
+
+    <!-- Canvas to display the Matplotlib figure -->
+    <div id="plot-container">
+        <canvas id="matplotlib-canvas"></canvas>
+    </div>
+
+    <!-- Load Matplotlib using PyScript -->
+    <py-config>
+    {
+        "packages": ["matplotlib", "numpy"]
+    }
+    </py-config>
+
+    <!-- PyScript Code -->
+    <script type="py">
+        import matplotlib.pyplot as plt
+        import numpy as np
+        from js import document
+        from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+
+        def plot_graph():
+            # Create a figure and axis
+            fig, ax = plt.subplots()
+            x = np.linspace(0, 10, 100)
+            y = np.sin(x)
+
+            ax.plot(x, y, label="Sine Wave", color="blue")
+            ax.set_title("Sine Wave Plot")
+            ax.set_xlabel("X Axis")
+            ax.set_ylabel("Y Axis")
+            ax.legend()
+
+            # Render the figure
+            canvas = FigureCanvas(fig)
+            fig.canvas.draw()
+
+            # Convert to an image and display
+            img_data = fig.canvas.tostring_rgb()
+            width, height = fig.canvas.get_width_height()
+
+            # Create an HTML image element and update it
+            img_element = document.createElement("img")
+            img_element.width = width
+            img_element.height = height
+            img_element.src = f"data:image/png;base64,{img_data.encode('base64').decode()}"
+
+            # Append to the container
+            plot_container = document.getElementById("plot-container")
+            plot_container.innerHTML = ""  # Clear previous plots
+            plot_container.appendChild(img_element)
+    </script>
+</body>
+</html>

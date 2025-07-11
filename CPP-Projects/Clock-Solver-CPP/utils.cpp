@@ -2,6 +2,15 @@
 
 int state[14] = {0};
 
+bool is_solved(){
+for (int i = 0; i < 14; i++){
+if(state[i]!=0){
+    return false;
+}   
+}
+    return true;
+}
+
 void apply_moves(const string &moves)
 {
     istringstream stream(moves);
@@ -103,3 +112,55 @@ void generate_move_table()
 
     std::cout << "};\n\n";
 }
+
+void generate_notation_conversion(){
+    vector<string> moves = {"UR", };
+
+
+}
+
+bool isLetter(char c) {
+    return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+}
+
+// void apply_scramble(const string &scramble){
+//     //unordered_map<string, string> format_map
+//     istringstream stream(scramble);
+//     string move;
+    
+//     string formatted_moves;
+
+//     while (stream >> move)
+//     {
+
+
+//         if(move[0] == 'a'){
+//             move = "all,"+""+
+
+//         }
+
+//         else if(move[0] == 'A'){
+
+//         }
+
+//         else if(isLetter(move[1])){
+
+//         }
+
+//         else{
+
+
+//         }
+
+//         formatted_moves+=move;
+        
+//     }
+//         apply_moves(move);
+    
+
+// }
+
+
+//UR1- DR3- DL5+ UL3+ U3+ R1- D1+ L2- ALL5- y2 U1+ R0+ D1+ L5- ALL0+
+//012345678
+//"dl,B,-4"

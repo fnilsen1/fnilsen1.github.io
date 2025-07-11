@@ -8,6 +8,8 @@
         "random": "cpp",
         "ostream": "cpp",
         "xstring": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "iosfwd": "cpp",
+        "sstream": "cpp"
     }
 }

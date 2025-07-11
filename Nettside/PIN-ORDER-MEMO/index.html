@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pin Order Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background: #f9f9f9;
+  }
+  input, button, textarea {
+    font-size: 16px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  button {
+    margin-top: 10px;
+    background: #4285f4;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #3367d6;
+  }
+  pre {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    overflow-x: auto;
+  }
+</style>
+</head>
+<body>
+<h2>Pin Order Calculator</h2>
+<p>Enter a pin order (7 pins, space separated):</p>
+<input type="text" id="pinInput" placeholder="e.g., DR R ul dl \\ UL L">
+<button onclick="generate()">Generate Calculations</button>
+<h3>Results:</h3>
+<pre id="output"></pre>
+
+<a href="pin_set_str7.txt" target="_blank">View all pin sets</a>
+
+
+<script>
+// Precompute matrices
+const U = [
+  [1,0,0,0,1,1,1,0,0,0,1,1,1,0,1,0],
+  [1,1,0,0,1,1,1,1,1,0,1,1,1,1,1,0],
+  [0,1,0,0,1,0,0,1,1,0,1,1,0,1,1,0],
+  [1,0,0,1,1,1,1,0,1,1,1,1,1,1,1,0],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
+  [0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0],
+  [0,0,0,1,0,0,1,0,1,1,0,1,1,1,1,0],
+  [0,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0],
+  [0,0,1,0,0,1,0,1,0,1,1,0,1,1,1,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+];
+
+const D = [
+  [0,1,1,1,0,0,0,1,1,1,0,0,0,1,0,1],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [1,0,1,1,0,1,1,0,0,1,0,0,1,0,0,1],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [1,1,1,0,1,1,0,1,0,0,1,0,0,0,0,1],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [1,1,0,1,1,0,1,0,1,0,0,1,0,0,0,1],
+  [-1,-1,-1,-1,0,-1,-1,-1,-1,-1,0,0,-1,-1,0,-1],
+  [-1,-1,-1,-1,-1,-1,-1,0,-1,-1,0,-1,-1,0,0,-1],
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1],
+  [-1,-1,-1,-1,-1,-1,0,-1,-1,-1,-1,0,0,-1,0,-1],
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,0,-1,-1,0,0,0,-1]
+];
+
+const dials = ["UL","U","UR","L","C","R","DL","D","DR","d","r","c","l","u"];
+const pinOrderNotation = ['UL','UR','DR','DL','U','\\','L','R','/','D','dl','dr','ur','ul','ALL','all'];
+const pinToIdx = {};
+pinOrderNotation.forEach((p,i)=>pinToIdx[p]=i);
+
+function generate(){
+  const input = document.getElementById("pinInput").value.trim();
+  const output = document.getElementById("output");
+  if(!input){
+    output.textContent="Please enter a pin order.";
+    return;
+  }
+  const pins = input.split(/\s+/);
+  if(pins.length !==7){
+    output.textContent="Please enter exactly 7 pins.";
+    return;
+  }
+
+  // Build 14x14 matrix
+  const mat = [];
+  for(let r=0;r<14;r++){
+    mat[r]=[];
+  }
+  for(const pin of pins){
+    const idx = pinToIdx[pin];
+    for(let r=0;r<14;r++){
+      mat[r].push(U[r][idx]);
+    }
+    for(let r=0;r<14;r++){
+      mat[r].push(D[r][idx]);
+    }
+  }
+
+  // Invert
+  let inv;
+  inv = numeric.inv(mat);
+// Check for NaN values (singular matrix produces NaNs)
+let hasNaN = inv.some(row => row.some(v => isNaN(v)));
+if (hasNaN) {
+  output.textContent = "Matrix is singular; cannot compute inverse.";
+  return;
+}
+
+
+  const negInv = numeric.mul(-1,inv);
+
+  // Build calculation strings
+  let result = "";
+  for(let i=0;i<14;i++){
+    const row=negInv[i];
+    const terms=[];
+    for(let j=0;j<14;j++){
+      const val=row[j];
+      if(Math.abs(val)<1e-8) continue;
+      const sign=val>0?"+":"-";
+      terms.push([sign,dials[j]]);
+    }
+    let expr="";
+    terms.forEach((t,k)=>{
+      if(k===0 && t[0]==="+") expr+=t[1];
+      else expr+=t[0]+t[1];
+    });
+    const pinIdx=Math.floor(i/2);
+    const part=(i%2===0)?"front":"back";
+    result+=`${pins[pinIdx]} ${part}: ${expr}\n`;
+  }
+  output.textContent=result.trim();
+}
+
+
+</script>
+<!-- numeric.js for matrix inversion -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+</body>
+</html>
