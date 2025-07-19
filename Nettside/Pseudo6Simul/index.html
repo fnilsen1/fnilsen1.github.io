@@ -108,6 +108,7 @@
   <label><input type="checkbox" id="hook">Hook</label>
   <label><input type="checkbox" id="yah">Yah</label>
   <label><input type="checkbox" id="mirroryah">Mirror Yah</label>
+  <label><input type="checkbox" id="slashless1">Slashless 1</label>
   <label><input type="checkbox" id="tilt">Right Tilt</label>
 </div>
 
@@ -180,7 +181,7 @@
   }
   
   function matchesCase(s, caseId) {
-      const [U, L, C, R, D, d, r, c, l, u] = s;
+      const [U, L, C, R, D, d, r, c, l, u, UR, UL, DR, DL] = s;
   
     switch (caseId) {
       case 'lshape':
@@ -208,7 +209,12 @@
       case 'mirroryah':
         return (c === r && U === L) || (c === d && L === D) || (c === l && D === R) || (c === u && R === U) ||
                (C === R && u === l) || (C === D && l === d) || (C === L && d === r) || (C === U && r === u);
-  
+
+      case 'slashless1':
+        return (
+          (c === d && (UR - U + C - D + l - UL + r) === -1 * ((u - c + d) + (UL - L) + (DR - R))) ||
+          (c === l && (UL - L + C - R + u - UR + d) === -1 * (r - c + l + DL - D + UR - U)));
+
       case 'tilt':
         return (C === U && c === r) || (C === R && c === u) || (C === D && c === l) || (C === L && c === d) ||
                (c === u && C === R) || (c === r && C === U) || (c === d && C === L) || (c === l && C === D);
@@ -221,7 +227,7 @@
   function generateScramble() {
     const selectedCases = [
       'lshape', 'fall', 'line', 'ankh',
-      'hook', 'yah', 'mirroryah', 'tilt'
+      'hook', 'yah', 'mirroryah', 'slashless1', 'tilt'
     ].filter(id => document.getElementById(id).checked);
   
     // ✅ Check for no selection
