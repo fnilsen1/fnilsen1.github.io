@@ -182,7 +182,13 @@
   
   function matchesCase(s, caseId) {
       const [U, L, C, R, D, d, r, c, l, u, UR, UL, DR, DL] = s;
+      let ur = -DR;
+      let ul = -DL;
+      let dr = -UR;
+      let dl = -UL;
   
+    console.log(DR)
+    console.log(ur)
     switch (caseId) {
       case 'lshape':
         return (C === U && U === L) || (C === U && U === R) || (C === R && R === D) || (C === D && D === L) ||
