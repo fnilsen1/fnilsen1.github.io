@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pseudo 6 simul Trainer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    .case-options label {
+      display: block;
+      margin: 4px 0;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: monospace;
+    }
+    .link {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Scramble Generator</h1>
+
+<div class="case-options">
+  <label><input type="checkbox" id="lshape"> L shape</label>
+  <label><input type="checkbox" id="fall"> Fall</label>
+  <label><input type="checkbox" id="line"> Line</label>
+  <label><input type="checkbox" id="ankh"> Ankh</label>
+  <label><input type="checkbox" id="hook"> Hook</label>
+  <label><input type="checkbox" id="yah"> Yah</label>
+  <label><input type="checkbox" id="mirroryah"> Mirror Yah</label>
+  <label><input type="checkbox" id="tilt"> Right Tilt</label>
+</div>
+
+<button onclick="generateScramble()">Generate Scramble</button>
+<p id="enter-info">Press <strong>Enter</strong> to generate a new scramble</p>
+
+
+<div id="result">Scramble will appear here.</div>
+
+<div class="link">
+  <a href="https://docs.google.com/document/d/18PhMN3ofCMx8j9zFiXPLUaa2X-fLdQA8Ax1Km5-RrSQ/edit?tab=t.0" target="_blank">
+    View pseudo 6s document
+  </a>
+</div>
+
+<script>
+function mod12(val) {
+  val = ((val % 12) + 12) % 12;
+  return val >= 7 ? val - 12 : val;
+}
+
+function formatMove(name, val) {
+  const absVal = Math.abs(val);
+  const sign = val >= 0 ? '+' : '-';
+  return `${name}${absVal}${sign}`;
+}
+
+function findScrambleString(s) {
+  const [U, L, C, R, D, u, l, c, r, d, UR, UL, DR, DL] = s;
+
+  let base_all = 3 * c - u - r - d - l;
+  let base_L = r - c;
+  let base_D = u - c;
+  let base_R = l - c;
+  let base_U = d - c;
+
+  base_all = mod12(base_all);
+  base_L = mod12(base_L);
+  base_D = mod12(base_D);
+  base_R = mod12(base_R);
+  base_U = mod12(base_U);
+
+  let ALL = 4 * C - 2 * u - 2 * r - 2 * d - 2 * l + U + R + D + L - UL - UR - DR - DL - C;
+  let L_ = C + UR + DR - U - R - D + u + d + 2 * l - 2 * c;
+  let D_ = C + UL + UR - U - R - L + 2 * u + r + l - 2 * c;
+  let R_ = C + UL + DL - U - D - L + u + 2 * r + d - 2 * c;
+  let U_ = C + DR + DL - R - D - L + r + 2 * d + l - 2 * c;
+  let UL_ = c - d - l + R + D - DR - C;
+  let DL_ = c - u - l + U + R - UR - C;
+  let DR_ = c - u - r + U + L - UL - C;
+  let UR_ = c - r - d + D + L - DL - C;
+
+  ALL = mod12(ALL);
+  L_ = mod12(L_);
+  D_ = mod12(D_);
+  R_ = mod12(R_);
+  U_ = mod12(U_);
+  UL_ = mod12(UL_);
+  DL_ = mod12(DL_);
+  DR_ = mod12(DR_);
+  UR_ = mod12(UR_);
+
+  const u_ = mod12(u), r_ = mod12(r), d_ = mod12(d), l_ = mod12(l), c_ = mod12(c);
+
+  return `${formatMove('UR', UR_)} ${formatMove('DR', DR_)} ${formatMove('DL', DL_)} ${formatMove('UL', UL_)} ` +
+         `${formatMove('U', U_)} ${formatMove('R', R_)} ${formatMove('D', D_)} ${formatMove('L', L_)} ` +
+         `${formatMove('ALL', ALL)} y2 ` +
+         `${formatMove('U', base_U)} ${formatMove('R', base_R)} ${formatMove('D', base_D)} ` +
+         `${formatMove('L', base_L)} ${formatMove('ALL', base_all)}`;
+}
+
+function matchesCase(s, caseId) {
+    const [U, L, C, R, D, d, r, c, l, u] = s;
+
+  switch (caseId) {
+    case 'lshape':
+      return (C === U && U === L) || (C === U && U === R) || (C === R && R === D) || (C === D && D === L) ||
+             (c === l && l === u) || (c === u && u === r) || (c === r && r === d) || (c === d && d === l);
+
+    case 'fall':
+      return (c === d && U === L) || (c === l && L === D) || (c === u && R === D) || (c === r && R === U) ||
+             (C === D && u === l) || (C === L && l === d) || (C === U && r === d) || (C === R && r === u);
+
+    case 'line':
+      return (U === C && C === D) || (L === C && C === R) || (u === c && c === d) || (l === c && c === r);
+
+    case 'ankh':
+      return (c === d && C === D) || (c === l && C === R) || (c === u && C === U) || (c === r && C === L);
+
+    case 'hook':
+      return (c === d && u === l) || (c === l && u === r) || (c === u && r === d) || (c === r && l === d) ||
+             (C === D && U === L) || (C === L && U === R) || (C === U && R === D) || (C === R && L === D);
+
+    case 'yah':
+      return (c === d && D === R) || (c === l && U === R) || (c === u && L === U) || (c === r && L === D) ||
+             (C === D && d === r) || (C === L && u === r) || (C === U && l === u) || (C === R && l === d);
+
+    case 'mirroryah':
+      return (c === r && U === L) || (c === d && L === D) || (c === l && D === R) || (c === u && R === U) ||
+             (C === R && u === l) || (C === D && l === d) || (C === L && d === r) || (C === U && r === u);
+
+    case 'tilt':
+      return (C === U && c === r) || (C === R && c === u) || (C === D && c === l) || (C === L && c === d) ||
+             (c === u && C === R) || (c === r && C === U) || (c === d && C === L) || (c === l && C === D);
+
+    default:
+      return true;
+  }
+}
+
+function generateScramble() {
+  const selectedCases = [
+    'lshape', 'fall', 'line', 'ankh',
+    'hook', 'yah', 'mirroryah', 'tilt'
+  ].filter(id => document.getElementById(id).checked);
+
+  // ✅ Check for no selection
+  if (selectedCases.length === 0) {
+    document.getElementById('result').textContent = "⚠️ Please select at least one case.";
+    return;
+  }
+
+  let scramble = [];
+  let attempts = 0;
+  while (attempts++ < 100000) {
+    scramble = Array.from({ length: 14 }, () => Math.floor(Math.random() * 12));
+    if (selectedCases.some(caseId => matchesCase(scramble, caseId))) {
+      break;
+    }
+  }
+
+  const result = findScrambleString(scramble);
+  document.getElementById('result').textContent = result;
+}
+
+// Run scramble when Enter is pressed
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    generateScramble();
+  }
+});
+
+
+</script>
+
+</body>
+</html>
