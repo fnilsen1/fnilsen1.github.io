@@ -212,8 +212,8 @@
 
       case 'slashless1':
         return (
-          (c === d && (UR - U + C - D + l - UL + r) === -1 * ((u - c + d) + (UL - L) + (DR - R))) ||
-          (c === l && (UL - L + C - R + u - UR + d) === -1 * (r - c + l + DL - D + UR - U)));
+          (c === d && (UR - U + C - D + l - ul + r) === -1 * ((u - c + d) + (UL - L) + (DR - R))) ||
+          (c === l && (UL - L + C - R + u - ur + d) === -1 * (r - c + l + DL - D + UR - U)));
 
       case 'tilt':
         return (C === U && c === r) || (C === R && c === u) || (C === D && c === l) || (C === L && c === d) ||
